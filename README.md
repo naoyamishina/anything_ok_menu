@@ -63,3 +63,6 @@
   メイン機能実装：1/14 - 2/18
   β版をRUNTEQ内リリース（MVP）：2/18〆切
   本番リリース：3/4
+
+##　画面遷移図
+https://www.figma.com/file/WM9tecj3oRarAMY79hEqyQ/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0%3A1&t=Io8iGQydn5SoY7gq-1
