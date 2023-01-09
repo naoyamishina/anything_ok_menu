@@ -49,6 +49,10 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'jquery-rails'
 
+gem 'sorcery'
+
+gem 'rails-i18n'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -58,6 +62,9 @@ group :development, :test do
   # Test
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem "capybara"       
+  gem "selenium-webdriver" 
+  gem "webdrivers"  
 end
 
 group :development do
