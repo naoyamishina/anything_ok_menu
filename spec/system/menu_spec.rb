@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Menus', type: :system do
   let!(:user) { create(:user) }
   let(:menu) { create(:menu, user: user) }
+  let(:menu_by_others) { create(:menu) }
 
   describe 'メニューのCRUD' do
     describe 'メニュー一覧表示' do
@@ -70,6 +71,27 @@ RSpec.describe 'Menus', type: :system do
           expect(page).to have_content 'メニューを作成できませんでした'
           expect(page).to have_content "メニュー名を入力してください"
           expect(page).to have_current_path new_menu_path
+        end
+      end
+    end
+
+    describe '掲示板の編集' do
+      context '他人の掲示板の場合' do
+        it '編集ボタン・削除ボタンが表示されないこと' do
+          login_as(user)
+          sleep 0.5
+          visit menu_path menu_by_others
+          expect(page).not_to have_selector("#button-edit-#{menu_by_others.id}")
+          expect(page).not_to have_selector("#button-delete-#{menu_by_others.id}")
+        end
+      end
+      context '自分の掲示板の場合' do
+        it '編集ボタン・削除ボタンが表示されること' do
+          login_as(user)
+          sleep 0.5
+          visit menu_path menu
+          expect(page).to have_selector("#button-edit-#{menu.id}")
+          expect(page).to have_selector("#button-delete-#{menu.id}")
         end
       end
     end
