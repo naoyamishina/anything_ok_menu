@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Menus', type: :system do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
   let(:menu) { create(:menu, user: user) }
 
   describe 'メニューのCRUD' do
@@ -15,9 +15,8 @@ RSpec.describe 'Menus', type: :system do
       end
 
       context 'ログインしている場合' do
-        before do
-          login_as(user)
-        end
+        before {login_as(user)}
+
         it 'ヘッダーのリンクからメニュー一覧へ遷移できること' do
           click_on('メニュー')
           click_on('メニュー一覧')
@@ -25,6 +24,7 @@ RSpec.describe 'Menus', type: :system do
         end
 
         context 'メニューが一件もない場合' do
+          before {login_as(user)}
           it '何もない旨のメッセージが表示されること' do
             visit menus_path
             expect(page).to have_content('メニューがありません'), 'メニューが一件もない場合、「メニューがありません」というメッセージが表示されていません'
@@ -32,6 +32,7 @@ RSpec.describe 'Menus', type: :system do
         end
 
         context 'メニューがある場合' do
+          before {login_as(user)}
           it 'メニューの一覧が表示されること' do
             menu
             visit menus_path
@@ -44,30 +45,31 @@ RSpec.describe 'Menus', type: :system do
     end
 
     describe 'メニュー新規登録' do
-      before do
-        login_as(user)
-      end
       context 'フォームの入力値が正常' do
+        before {login_as(user)}
         it 'メニューの新規作成が成功する' do
+          sleep 0.5
           visit new_menu_path
           fill_in 'メニュー名', with: 'test_title'
           fill_in 'メモ', with: 'test_content'
           click_button '登録する'
           expect(page).to have_content 'test_title'
           expect(page).to have_content 'test_content'
-          expect(current_path).to eq menus_path
+          expect(page).to have_current_path menus_path
         end
       end
 
       context 'メニュー名が未入力' do
+        before {login_as(user)}
         it 'タスクの新規作成が失敗する' do
+          sleep 0.5
           visit new_menu_path
           fill_in 'メニュー名', with: ''
           fill_in 'メモ', with: 'test_content'
           click_button '登録する'
           expect(page).to have_content 'メニューを作成できませんでした'
           expect(page).to have_content "メニュー名を入力してください"
-          expect(current_path).to eq menus_path
+          expect(page).to have_current_path new_menu_path
         end
       end
     end

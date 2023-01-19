@@ -3,10 +3,20 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    post: '投稿'
+    menu: "メニュー"
+    menu_index: "メニュー一覧"
+    create_menu: "メニュー作成"
+    bookmark_index: "ブックマーク一覧"
+    profile: "プロフィール"
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: '削除しますか？'
   users:
     new:
       title: 'ユーザー登録'
@@ -30,6 +40,10 @@ ja:
       no_result: 'メニューがありません。'
     new:
       title: 'メニュー作成'
+    show:
+      title: '掲示板詳細'
+    edit:
+      title: '掲示板編集'
     bookmarks:
       title: 'ブックマーク一覧'
   profiles:

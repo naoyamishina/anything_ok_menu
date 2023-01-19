@@ -7,10 +7,10 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to menus_path, success: t('.success')
+      redirect_to menus_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
-      render action: 'new'
+      render action: 'new', status: :unprocessable_entity
     end
   end
 

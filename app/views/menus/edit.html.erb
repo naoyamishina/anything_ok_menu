@@ -1,0 +1,10 @@
+
+<% content_for(:title, @menu.name) %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <%= render 'form', { menu: @menu } %>
+    </div>
+  </div>
+</div>

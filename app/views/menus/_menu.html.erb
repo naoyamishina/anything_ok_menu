@@ -1,17 +1,12 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="menu-id-<%= menu.id %>">
     <div class="card">
-      <%= image_tag 'menu_placeholder.png', class: 'card-img-top', size: '300x200' %>
+      <%= image_tag menu.menu_image_url, class: 'card-img-top', size: '300x200' %>
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#">
-            <%= menu.name %>
-          </a>
+          <%= link_to menu.name, menu_path(menu) %>
         </h4>
-        <div class='mr10 float-right'>
-          <a href="#"><%= icon 'fas', 'trash', class: 'pr-1' %></a>
-          <a href="#"><%= icon 'fa', 'pen' %></a>
-        </div>
+        <%= render 'crud_menus', menu: menu if current_user.own?(menu) %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= icon 'far', 'user' %>

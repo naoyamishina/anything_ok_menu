@@ -11,7 +11,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
         # expect(page).to have_content 'Login successful'
-        expect(current_path).to eq menus_path
+        expect(page).to have_current_path menus_path
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
         # expect(page).to have_content 'Login failed'
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path
       end
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe 'UserSessions', type: :system do
         find('#header-profile').click
         click_link 'ログアウト'
         # expect(page).to have_content 'Logged out'
-        expect(current_path).to eq root_path
+        expect(page).to have_current_path root_path
       end
     end
   end
