@@ -16,6 +16,11 @@
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @menu.user.name %></li>
                 <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+                <% if current_user.own?(@menu) %>
+                  <%= render 'crud_menus', menu: @menu %>
+                <% else %>
+                  <%= render 'like_button', menu: @menu  %>
+                <% end %>
               </ul>
             </div>
           </div>

@@ -41,6 +41,10 @@ class MenusController < ApplicationController
     redirect_to menus_path, success: t('defaults.message.deleted', item: Menu.model_name.human), status: :see_other
   end
 
+  def likes
+    @like_menus = current_user.like_menus.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def menu_params
