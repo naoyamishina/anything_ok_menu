@@ -12,15 +12,16 @@
             </div>
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @menu.name %></h3>
-              <%= render 'crud_menus', menu: @menu if current_user.own?(@menu) %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @menu.user.name %></li>
                 <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+                <li class="list-inline-item">
                 <% if current_user.own?(@menu) %>
                   <%= render 'crud_menus', menu: @menu %>
                 <% else %>
                   <%= render 'like_button', menu: @menu  %>
                 <% end %>
+                </li>
               </ul>
             </div>
           </div>

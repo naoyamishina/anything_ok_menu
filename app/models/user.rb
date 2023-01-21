@@ -25,6 +25,6 @@ class User < ApplicationRecord
   end
 
   def like?(menu)
-    like_menus.include?(menu)
+    menu.likes.pluck(:user_id).include?(id)
   end
 end
