@@ -8,6 +8,7 @@ ja:
     menu_index: "メニュー一覧"
     create_menu: "メニュー作成"
     profile: "プロフィール"
+    search_word: '検索ワード'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"

@@ -60,6 +60,8 @@ gem 'carrierwave'
 
 gem 'kaminari'
 
+gem 'ransack'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 

@@ -2,7 +2,8 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :destroy]
 
   def index
-    @menus = Menu.all.includes([:user, :likes]).order(created_at: :desc).page(params[:page])
+    @q = Menu.ransack(params[:q])
+    @menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -42,7 +43,8 @@ class MenusController < ApplicationController
   end
 
   def likes
-    @like_menus = current_user.like_menus.includes([:user, :likes]).order(created_at: :desc).page(params[:page])
+    @q = current_user.like_menus.ransack(params[:q])
+    @like_menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
   end
 
   private
