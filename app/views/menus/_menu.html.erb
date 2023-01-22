@@ -1,29 +1,30 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="menu-id-<%= menu.id %>">
-    <div class="card">
-      <%= image_tag menu.menu_image_url, class: 'card-img-top', size: '300x200' %>
+    <div class="card mx-auto">
+      <%= image_tag menu.menu_image_url, class: 'card-img-top border-bottom', size: '300x200' %>
       <div class="card-body">
-        <h4 class="card-title">
-          <%= link_to menu.name, menu_path(menu) %>
-        </h4>
-        <% if logged_in? %>
-          <% if current_user.own?(menu) %>
-            <%= render 'crud_menus', menu: menu %>
-          <% else %>
-            <%= render 'like_button', menu: menu  %>
-          <% end %>
-        <% end %>
+        <h5 class="card-title">
+          <%= menu.name%>
+        </h5>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <%= icon 'far', 'user' %>
+            <%= image_tag menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
             <%= menu.user.name %>
           </li>
+        </ul>
+        <%= link_to "詳細", menu_path(menu), class: "btn btn-secondary btn-sm mb-3" %>
+        <ul class="list-inline">
           <li class="list-inline-item">
-            <%= icon 'far', 'calendar' %>
-            <%= l menu.created_at, format: :long %>
+            <%= l menu.created_at, format: :short %>
+            <% if logged_in? %>
+              <% if current_user.own?(menu) %>
+                <%= render 'crud_menus', menu: menu %>
+              <% else %>
+                <%= render 'like_button', menu: menu  %>
+              <% end %>
+            <% end %>
           </li>
         </ul>
-        <p class="card-text"><%= menu.memo %></p>
       </div>
     </div>
   </div>
