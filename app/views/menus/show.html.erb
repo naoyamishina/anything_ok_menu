@@ -16,10 +16,12 @@
                 <li class="list-inline-item">by <%= @menu.user.name %></li>
                 <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
                 <li class="list-inline-item">
-                <% if current_user.own?(@menu) %>
-                  <%= render 'crud_menus', menu: @menu %>
-                <% else %>
-                  <%= render 'like_button', menu: @menu  %>
+                <% if logged_in? %>
+                  <% if current_user.own?(@menu) %>
+                    <%= render 'crud_menus', menu: @menu %>
+                  <% else %>
+                    <%= render 'like_button', menu: @menu  %>
+                  <% end %>
                 <% end %>
                 </li>
               </ul>
@@ -32,7 +34,9 @@
   </div>
 
   <!-- コメントフォーム -->
-  <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+  <% if logged_in? %>
+    <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+  <% end %>
 
   <!-- コメントエリア -->
   <%= render 'comments/comments', { comments: @comments } %>
