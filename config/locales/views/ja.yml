@@ -9,6 +9,7 @@ ja:
     create_menu: "新メニュー作成"
     edit: '編集'
     search_word: '検索ワード'
+    detail: "詳細"
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -48,9 +49,9 @@ ja:
     new:
       title: 'メニュー作成'
     show:
-      title: '掲示板詳細'
+      title: 'メニュー詳細'
     edit:
-      title: '掲示板編集'
+      title: 'メニュー編集'
     likes:
       title: 'お気に入り一覧'
       no_result: 'お気に入りのメニューがありません。'

@@ -12,7 +12,7 @@
             <%= menu.user.name %>
           </li>
         </ul>
-        <%= link_to "詳細", menu_path(menu), class: "btn btn btn-outline-success btn-sm mb-3" %>
+        <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-success btn-sm mb-3" %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= l menu.created_at, format: :short %>
