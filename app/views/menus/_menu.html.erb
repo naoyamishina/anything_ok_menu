@@ -1,6 +1,6 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="menu-id-<%= menu.id %>">
-    <div class="card mx-auto">
+    <div class="card mx-auto bg-light mb-3">
       <%= image_tag menu.menu_image_url, class: 'card-img-top border-bottom', size: '300x200' %>
       <div class="card-body">
         <h5 class="card-title">
@@ -15,7 +15,7 @@
         <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-success btn-sm mb-3" %>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <%= l menu.created_at, format: :short %>
+            <%= l menu.created_at, format: :long %>
             <% if logged_in? %>
               <% if current_user.own?(menu) %>
                 <%= render 'crud_menus', menu: menu %>
