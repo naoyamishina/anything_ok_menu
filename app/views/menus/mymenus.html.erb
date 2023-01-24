@@ -5,21 +5,21 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
-      <%= render 'search_form', url: menus_path %>
+      <%= render 'search_form', url: likes_menus_path %>
     </div>
   </div>
-  <!-- 掲示板一覧 -->
+  <!-- メニュー一覧 -->
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @menus.present? %>
-          <%= render @menus %>
+        <% if @my_menus.present? %>
+          <%= render @my_menus %>
         <% else %>
           <p><%= t('.no_result') %></p>
         <% end %>
       </div>
       <!-- ページネーション -->
-      <%= paginate @menus %>
+      <%= paginate @my_menus %>
     </div>
   </div>
 </div>

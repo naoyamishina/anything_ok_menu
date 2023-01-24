@@ -48,6 +48,11 @@ class MenusController < ApplicationController
     @like_menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
   end
 
+  def mymenus
+    @q = current_user.menus.ransack(params[:q])
+    @my_menus = @q.result(distinct: true).includes([:user]).order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def menu_params

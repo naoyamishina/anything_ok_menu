@@ -1,18 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div class="container pt-3 mb-5">
-  <div class="row m-lg-4">
-    <ul class="nav nav-lb-tab mb-6 justify-content-center" id="#" role="tablist">
-      <li class="nav-item ms-0 m-lg-2" role="presentation">
-        <a class="btn btn-outline-secondary <%= active_if('menus#index') %>" href="/menus" role="tab">みんなのメニュー</a>
-      </li>
-      <li class="nav-item m-lg-2" role="presentation">
-        <a class="btn btn-outline-secondary <%= active_if('menus#show') %>" href="/menus/new" role="tab">自分のメニュー</a>
-      </li>
-      <li class="nav-item m-lg-2" role="presentation">
-        <a class="btn btn-outline-secondary <%= active_if('menus#like') %>%>" href="/menus/likes" role="tab">お気に入りメニュー</a>
-      </li>
-    </ul>
-  </div>
+  <%= render 'content_top' %>
 
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
@@ -20,7 +8,6 @@
       <%= render 'search_form', url: likes_menus_path %>
     </div>
   </div>
-
   <!-- メニュー一覧 -->
   <div class="row">
     <div class="col-12">
