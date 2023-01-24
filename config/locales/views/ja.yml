@@ -61,7 +61,5 @@ ja:
     destroy:
       success: 'お気に入りを外しました'
   profiles:
-    show:
-      title: 'プロフィール'
     edit:
-      title: 'プロフィール編集'
+      title: 'プロフィール'

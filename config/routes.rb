@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: %i[create destroy]
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[edit update]
 end
