@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+
+  enum gender: { other: 0, woman: 1, man: 2 }
   mount_uploader :avatar, AvatarUploader
   has_many :menus, dependent: :destroy 
   has_many :comments, dependent: :destroy

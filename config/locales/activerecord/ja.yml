@@ -11,9 +11,16 @@ ja:
         password_confirmation: 'パスワード確認'
         name: "ユーザーネーム"
         avatar: 'アバター'
+        gender: '性別'
       menu:
         name: 'メニュー名'
         memo: 'メモ'
         menu_image: 'イメージ写真'
       comment:
         body: 'コメント'
+  enums:
+    user:
+      gender:
+        other: 'その他'
+        man: '男性'
+        woman: '女性'
