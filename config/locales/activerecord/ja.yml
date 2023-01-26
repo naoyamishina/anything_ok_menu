@@ -16,6 +16,7 @@ ja:
         name: 'メニュー名'
         memo: 'メモ'
         menu_image: 'イメージ写真'
+        eat_at: '食事のタイミング'
       comment:
         body: 'コメント'
   enums:
@@ -24,3 +25,9 @@ ja:
         other: 'その他'
         man: '男性'
         woman: '女性'
+    menu:
+      eat_at:
+        anytime: 'いつでも'
+        breakfast: '朝食'
+        lunch: '昼食'
+        dinner: '夕食'

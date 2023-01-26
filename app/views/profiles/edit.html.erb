@@ -11,7 +11,7 @@
         </div>
         <div class="form-group mb-3">
           <%= f.label :gender %>
-          <%= f.select :gender, User.genders_i18n.invert.to_a.reverse.to_h, { include_blank: '選択してください' }, { class: 'form-select' } %>
+          <%= f.select :gender, User.genders_i18n.invert, {}, { class: 'form-select' } %>
         </div>
         <div class="form-group mb-3">
           <%= f.label :email %>

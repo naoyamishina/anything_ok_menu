@@ -1,4 +1,5 @@
 class Menu < ApplicationRecord
+  enum eat_at: { anytime: 0, breakfast: 1, lunch: 2, dinner: 3 }
   mount_uploader :menu_image, MenuImageUploader
 
   belongs_to :user
