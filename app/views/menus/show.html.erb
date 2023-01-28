@@ -1,0 +1,33 @@
+<% content_for(:title, @menu.name) %>
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <!-- 掲示板内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-3'>
+              <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+            </div>
+            <div class='col-md-9'>
+              <h3 class="d-inline"><%= @menu.name %></h3>
+              <%= render 'crud_menus', menu: @menu if current_user.own?(@menu) %>
+              <ul class="list-inline">
+                <li class="list-inline-item">by <%= @menu.user.name %></li>
+                <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+              </ul>
+            </div>
+          </div>
+          <%= simple_format(@menu.memo) %>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- コメントフォーム -->
+  <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+
+  <!-- コメントエリア -->
+  <%= render 'comments/comments', { comments: @comments } %>
+</div>

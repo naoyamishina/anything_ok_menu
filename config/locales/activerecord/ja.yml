@@ -2,9 +2,17 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      menu: 'メニュー'
+      comment: 'コメント'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         name: "ユーザーネーム"
+      menu:
+        name: 'メニュー名'
+        memo: 'メモ'
+        menu_image: 'イメージ写真'
+      comment:
+        body: 'コメント'
