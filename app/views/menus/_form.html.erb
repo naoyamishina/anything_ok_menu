@@ -1,0 +1,24 @@
+<%= form_with model: menu, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :memo %>
+    <%= f.text_area :memo, class: 'form-control', rows: 10 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :menu_image %>
+    <%= f.file_field :menu_image, onchange: 'previewImage()', class: 'form-control mb-3', accept: 'image/*' %>
+    <%= f.hidden_field :menu_image_cache %>
+  </div>
+  <div>
+    <%= image_tag menu.menu_image.url,
+                  class: 'rounded-circle',
+                  id: 'preview',
+                  size: '100x100' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
