@@ -8,6 +8,9 @@
           <div class='mb-3'>
             <h2 class="d-inline"><%= @menu.name %></h2>
           </div>
+          <h5 class="mb-2 <%= eat_at_color_if(@menu.eat_at_i18n) %>">
+            <%= @menu.eat_at_i18n %>
+          </h5>
           <div class='mb-2'>
             <%= simple_format(@menu.memo) %>
           </div>

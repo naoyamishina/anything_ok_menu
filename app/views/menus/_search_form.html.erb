@@ -1,14 +1,18 @@
 <div class="col-lg-10 offset-lg-3 mb-5">
   <%= search_form_for @q, url: url do |f| %>
     <div class="input-group">
-      <div class="input-group-append form-inline mb-3 col-md-4">
+      <div class="input-group-append form-inline mb-3 col-md-5">
         <%= f.search_field :name_or_memo_or_user_name_cont, class: 'form-control', placeholder: t('defaults.search_menu') %>
       </div>
       <div class="input-group-append form-inline mb-3 mx-sm-2">
         <%= f.select :eat_at_eq, Menu.eat_ats_i18n.invert.keys.map.with_index { |k, i| [t("enum.menu.eat_at.#{k}"), i] }, {}, { class: "form-select" } %>
       </div>
       <div class="input-group-append mb-3 mx-sm-2">
-        <%= f.submit class: 'btn btn-outline-danger' %>
+        <%= button_tag(type: "submit", class: "btn btn-outline-danger") do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        <% end %>
       </div>
     </div>
   <% end %>

@@ -1,19 +1,18 @@
 <div class="col-sm-12 col-lg-4 mb-3">
   <div id="menu-id-<%= menu.id %>">
     <div class="card mx-auto bg-light mb-3">
-      <%= image_tag menu.menu_image_url, class: 'card-img-top border-bottom', size: '300x200' %>
-      <div class="card-body">
-        <h5 class="card-title">
+      <%= link_to menu_path(menu), class: "card-body text-dark link-color-black" do %>
+        <%= image_tag menu.menu_image_url, class: 'card-img-top border-bottom', size: '300x200' %>
+        <h4 class="card-title mt-3">
           <%= menu.name %>
-        </h5>
-        <p class="mb-2">
+        </h4>
+        <p class="mb-2 <%= eat_at_color_if(menu.eat_at_i18n) %>">
           <%= menu.eat_at_i18n %>
         </p>
         <div class="mb-2">
           <%= image_tag menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
           <%= menu.user.name %>
         </div>
-        <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-danger btn-sm mb-3" %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= l menu.created_at, format: :long %>
@@ -28,7 +27,7 @@
             <% end %>
           </li>
         </ul>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
