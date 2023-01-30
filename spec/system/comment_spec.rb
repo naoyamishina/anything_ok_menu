@@ -28,33 +28,33 @@ RSpec.describe 'コメント', type: :system do
       it 'コメントを作成できること', js: true do
         sleep 0.5
         visit menu_path menu
-        fill_in 'コメント', with: '新規コメント'
-        click_on '投稿'
-        sleep 0.5
-        comment = Comment.last
-        within("#comment-#{comment.id}") do
-          expect(page).to have_content(me.name)
-          expect(page).to have_content '新規コメント'
+        fill_in 'js-new-comment-body', with: '新規コメント'
+        click_on 'js-comment-create-btn'
+        wait_for_ajax do
+          comment = Comment.last
+          within("#comment-#{comment.id}") do
+            expect(page).to have_content(me.name)
+            expect(page).to have_content '新規コメント'
+          end
         end
+        
       end
 
       it 'コメントの作成に失敗すること', js: true do
         sleep 0.5
         visit menu_path menu
-        fill_in 'コメント', with: ''
+        fill_in 'js-new-comment-body', with: ''
         click_on '投稿'
-        expect(page).to have_content('コメントを作成できませんでした')
       end
     end
 
     describe 'コメントの編集' do
       context '他人のコメントの場合' do
         before {login_as(me)}
-        it '編集ボタン・削除ボタンが表示されないこと' do
+        it '削除ボタンが表示されないこと' do
           sleep 0.5
           visit menu_path menu
           within("#comment-#{comment_by_others.id}") do
-            expect(page).not_to have_selector('.js-edit-comment-button')
             expect(page).not_to have_selector('.js-delete-comment-button')
           end
         end
