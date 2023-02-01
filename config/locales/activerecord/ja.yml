@@ -10,6 +10,7 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         name: "ユーザーネーム"
+        avatar: 'アバター'
       menu:
         name: 'メニュー名'
         memo: 'メモ'
