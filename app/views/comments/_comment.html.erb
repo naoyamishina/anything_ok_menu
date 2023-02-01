@@ -7,19 +7,14 @@
     <div id="js-comment-<%= comment.id %>">
       <%= simple_format(comment.body) %>
     </div>
-    <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
-      <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.body %></textarea>
-      <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-      <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
-    </div>
   </td>
 
-  <% if current_user.own?(comment) %>
+  <% if logged_in? && current_user.own?(comment) %>
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
           <%= link_to comment_path(comment),
-                      class: 'js-delete-comment-button',
+                      class: 'js-delete-comment-button link-color-black',
                       data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') },
                       remote: true do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

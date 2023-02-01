@@ -1,38 +1,45 @@
 <% content_for(:title, @menu.name) %>
-<div class="container pt-5">
-  <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
+<div class="container pt-3 mb-5 mt-3">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 mb-4 border p-4 bg-light">
+      <h1 class = "mb-4"><%= t('.title') %></h1>
       <!-- 掲示板内容 -->
       <article class="card">
         <div class="card-body">
           <div class='row'>
             <div class='col-md-3'>
-              <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid', size: '300x200' %>
+              <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border', size: '300x200' %>
             </div>
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @menu.name %></h3>
               <ul class="list-inline">
-                <li class="list-inline-item">by <%= @menu.user.name %></li>
+                <li class="list-inline-item mb-2">by <%= @menu.user.name %></li>
+                <br/>
                 <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
-                <li class="list-inline-item">
-                <% if current_user.own?(@menu) %>
-                  <%= render 'crud_menus', menu: @menu %>
-                <% else %>
-                  <%= render 'like_button', menu: @menu  %>
-                <% end %>
-                </li>
               </ul>
             </div>
           </div>
-          <%= simple_format(@menu.memo) %>
+          <div class='mb-4'>
+            <%= simple_format(@menu.memo) %>
+          </div>
+          <div class='mb-2'>
+          <% if logged_in? %>
+            <% if current_user.own?(@menu) %>
+              <%= render 'crud_menus', menu: @menu %>
+            <% else %>
+              <%= render 'like_button', menu: @menu  %>
+            <% end %>
+          <% end %>
+          </div>
         </div>
       </article>
     </div>
   </div>
 
   <!-- コメントフォーム -->
-  <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+  <% if logged_in? %>
+    <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+  <% end %>
 
   <!-- コメントエリア -->
   <%= render 'comments/comments', { comments: @comments } %>

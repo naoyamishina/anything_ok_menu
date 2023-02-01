@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :destroy]
+  skip_before_action :require_login, only: %i[index show]
 
   def index
     @q = Menu.ransack(params[:q])
@@ -45,6 +46,11 @@ class MenusController < ApplicationController
   def likes
     @q = current_user.like_menus.ransack(params[:q])
     @like_menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
+  end
+
+  def mymenus
+    @q = current_user.menus.ransack(params[:q])
+    @my_menus = @q.result(distinct: true).includes([:user]).order(created_at: :desc).page(params[:page])
   end
 
   private

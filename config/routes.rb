@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy], shallow: true
     collection do
       get :likes
+      get :mymenus
     end
   end
   resources :likes, only: %i[create destroy]
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[edit update]
 end
