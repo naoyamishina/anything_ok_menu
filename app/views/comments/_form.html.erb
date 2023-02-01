@@ -3,14 +3,10 @@
     <%= form_with model: comment, url: [menu, comment], id: 'new_comment' do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class='mb-2'>
-        <%= f.label :body %>
-      </div>
-      <div>
+        <%= f.label :body ,class: 'mb-2' %>
         <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5 %>
       </div>
-      <div class='text-left'>
-        <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger' %>
-      </div>
+      <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger', id: 'js-comment-create-btn' %>
     <% end %>
   </div>
 </div>
