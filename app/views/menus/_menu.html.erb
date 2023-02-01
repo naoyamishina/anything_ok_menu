@@ -13,7 +13,7 @@
           <%= image_tag menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
           <%= menu.user.name %>
         </div>
-        <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-success btn-sm mb-3" %>
+        <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-danger btn-sm mb-3" %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= l menu.created_at, format: :long %>

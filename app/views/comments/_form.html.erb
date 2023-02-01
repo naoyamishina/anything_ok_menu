@@ -2,9 +2,15 @@
   <div class="col-lg-6 offset-lg-3 mb-2 border p-4 bg-light">
     <%= form_with model: comment, url: [menu, comment], id: 'new_comment' do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :body %>
-      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5 %>
-      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+      <div class='mb-2'>
+        <%= f.label :body %>
+      </div>
+      <div>
+        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5 %>
+      </div>
+      <div class='text-left'>
+        <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger' %>
+      </div>
     <% end %>
   </div>
 </div>

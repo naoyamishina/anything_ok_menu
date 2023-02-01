@@ -1,8 +1,15 @@
-<%= search_form_for @q, url: url do |f| %>
-  <div class="input-group mb-3">
-    <%= f.search_field :name_or_memo_cont, class: 'form-control', placeholder: t('defaults.search_word') %>
-    <div class="input-group-append">
-      <%= f.submit class: 'btn btn-outline-primary' %>
+<div class="col-lg-10 offset-lg-3 mb-5">
+  <%= search_form_for @q, url: url do |f| %>
+    <div class="input-group">
+      <div class="input-group-append form-inline mb-3 col-md-4">
+        <%= f.search_field :name_or_memo_or_user_name_cont, class: 'form-control', placeholder: t('defaults.search_menu') %>
+      </div>
+      <div class="input-group-append form-inline mb-3 mx-sm-2">
+        <%= f.select :eat_at_eq, Menu.eat_ats_i18n.invert.keys.map.with_index { |k, i| [t("enum.menu.eat_at.#{k}"), i] }, {}, { class: "form-select" } %>
+      </div>
+      <div class="input-group-append mb-3 mx-sm-2">
+        <%= f.submit class: 'btn btn-outline-danger' %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
