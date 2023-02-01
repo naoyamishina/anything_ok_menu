@@ -26,4 +26,16 @@ module ApplicationHelper
   def active_action?(*names)
     names.any?("#{controller_path}##{action_name}")
   end
+
+  def eat_at_color_if(object)
+    if object == "いつでも"
+      'text-secondary'
+    elsif object == "朝食"
+      'text-success'
+    elsif object == "昼食"
+      'text-danger'
+    elsif object == "夕食"
+      'text-primary'
+    end
+  end
 end
