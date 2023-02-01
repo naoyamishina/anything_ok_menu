@@ -56,7 +56,7 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :memo, :menu_image, :menu_image_cache)
+    params.require(:menu).permit(:name, :memo, :menu_image, :menu_image_cache, :eat_at)
   end
 
   def set_menu

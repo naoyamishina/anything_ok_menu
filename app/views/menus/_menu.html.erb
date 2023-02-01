@@ -4,18 +4,21 @@
       <%= image_tag menu.menu_image_url, class: 'card-img-top border-bottom', size: '300x200' %>
       <div class="card-body">
         <h5 class="card-title">
-          <%= menu.name%>
+          <%= menu.name %>
         </h5>
-        <ul class="list-inline">
-          <li class="list-inline-item">
-            <%= image_tag menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
-            <%= menu.user.name %>
-          </li>
-        </ul>
+        <p class="mb-2">
+          <%= menu.eat_at_i18n %>
+        </p>
+        <div class="mb-2">
+          <%= image_tag menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
+          <%= menu.user.name %>
+        </div>
         <%= link_to t('defaults.detail'), menu_path(menu), class: "btn btn btn-outline-success btn-sm mb-3" %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= l menu.created_at, format: :long %>
+          </li>
+          <li class="list-inline-item">
             <% if logged_in? %>
               <% if current_user.own?(menu) %>
                 <%= render 'crud_menus', menu: menu %>

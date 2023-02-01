@@ -18,6 +18,7 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
+      profile_updated: "ユーザー情報を更新しました"
   views:
     pagination:
       first: "&laquo; 最初"

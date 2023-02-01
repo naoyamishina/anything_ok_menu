@@ -1,26 +1,25 @@
 <% content_for(:title, @menu.name) %>
 <div class="container pt-3 mb-5 mt-3">
   <div class="row">
-    <div class="col-lg-8 offset-lg-2 mb-4 border p-4 bg-light">
-      <h1 class = "mb-4"><%= t('.title') %></h1>
+    <div class="col-lg-6 offset-lg-3 mb-4 border p-4 bg-light">
       <!-- 掲示板内容 -->
       <article class="card">
         <div class="card-body">
-          <div class='row'>
-            <div class='col-md-3'>
-              <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border', size: '300x200' %>
-            </div>
-            <div class='col-md-9'>
-              <h3 class="d-inline"><%= @menu.name %></h3>
-              <ul class="list-inline">
-                <li class="list-inline-item mb-2">by <%= @menu.user.name %></li>
-                <br/>
-                <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
-              </ul>
-            </div>
+          <div class='mb-3'>
+            <h2 class="d-inline"><%= @menu.name %></h2>
           </div>
-          <div class='mb-4'>
+          <div class='mb-2'>
             <%= simple_format(@menu.memo) %>
+          </div>
+          <div class='col-md-8 mb-2'>
+            <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border', size: '300x200' %>
+          </div>
+          <div>
+            <ul class="list-inline">
+              <li class="list-inline-item mb-1">by <%= @menu.user.name %></li>
+              <br/>
+              <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+            </ul>
           </div>
           <div class='mb-2'>
           <% if logged_in? %>

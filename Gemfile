@@ -62,6 +62,8 @@ gem 'kaminari'
 
 gem 'ransack'
 
+gem 'enum_help'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
