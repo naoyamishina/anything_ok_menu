@@ -7,7 +7,6 @@ ja:
     menu: "メニュー"
     menu_index: "メニュー一覧"
     create_menu: "メニュー作成"
-    bookmark_index: "ブックマーク一覧"
     profile: "プロフィール"
     message:
       require_login: 'ログインしてください'
@@ -44,8 +43,14 @@ ja:
       title: '掲示板詳細'
     edit:
       title: '掲示板編集'
-    bookmarks:
-      title: 'ブックマーク一覧'
+    likes:
+      title: 'お気に入り一覧'
+      no_result: 'お気に入りのメニューがありません。'
+  likes:
+    create:
+      success: 'お気に入りしました'
+    destroy:
+      success: 'お気に入りを外しました'
   profiles:
     show:
       title: 'プロフィール'

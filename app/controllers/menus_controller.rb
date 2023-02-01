@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :destroy]
 
   def index
-    @menus = Menu.all.includes(:user).order(created_at: :desc)
+    @menus = Menu.all.includes([:user, :likes]).order(created_at: :desc)
   end
 
   def new
@@ -39,6 +39,10 @@ class MenusController < ApplicationController
   def destroy
     @menu.destroy!
     redirect_to menus_path, success: t('defaults.message.deleted', item: Menu.model_name.human), status: :see_other
+  end
+
+  def menus
+    @menu_boards = current_user.like_boards.includes(:user).order(created_at: :desc)
   end
 
   private

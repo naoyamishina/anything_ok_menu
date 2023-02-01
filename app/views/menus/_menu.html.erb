@@ -6,7 +6,11 @@
         <h4 class="card-title">
           <%= link_to menu.name, menu_path(menu) %>
         </h4>
-        <%= render 'crud_menus', menu: menu if current_user.own?(menu) %>
+        <% if current_user.own?(menu) %>
+          <%= render 'crud_menus', menu: menu %>
+        <% else %>
+          <%= render 'like_button', menu: menu  %>
+        <% end %>
         <ul class="list-inline">
           <li class="list-inline-item">
             <%= icon 'far', 'user' %>
