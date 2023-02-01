@@ -4,7 +4,7 @@
       <%= render 'shared/error_messages', object: f.object %>
       <div class='mb-2'>
         <%= f.label :body ,class: 'mb-2' %>
-        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5 %>
+        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5, placeholder: "1 ~ 65,535 文字" %>
       </div>
       <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger', id: 'js-comment-create-btn' %>
     <% end %>
