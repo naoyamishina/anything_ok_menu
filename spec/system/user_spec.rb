@@ -10,7 +10,7 @@ RSpec.describe 'Users', type: :system do
           visit new_user_path
           fill_in 'ユーザーネーム', with: 'test'
           fill_in 'メールアドレス', with: 'email@example.com'
-          fill_in 'パスワード (英数字3文字以上)', with: 'password'
+          fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           # expect(page).to have_content 'User was successfully created.'
@@ -23,7 +23,7 @@ RSpec.describe 'Users', type: :system do
           visit new_user_path
           fill_in 'ユーザーネーム', with: ''
           fill_in 'メールアドレス', with: 'email@example.com'
-          fill_in 'パスワード (英数字3文字以上)', with: 'password'
+          fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           # expect(page).to have_content '1 error prohibited this user from being saved'
@@ -37,7 +37,7 @@ RSpec.describe 'Users', type: :system do
           visit new_user_path
           fill_in 'ユーザーネーム', with: 'test'
           fill_in 'メールアドレス', with: ''
-          fill_in 'パスワード (英数字3文字以上)', with: 'password'
+          fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           # expect(page).to have_content '1 error prohibited this user from being saved'
@@ -52,7 +52,7 @@ RSpec.describe 'Users', type: :system do
           visit new_user_path
           fill_in 'ユーザーネーム', with: 'test'
           fill_in 'メールアドレス', with: existed_user.email
-          fill_in 'パスワード (英数字3文字以上)', with: 'password'
+          fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           # expect(page).to have_content '1 error prohibited this user from being saved'
