@@ -16,7 +16,7 @@ RSpec.describe 'コメント', type: :system do
       it 'コメントの一覧が表示されること' do
         sleep 0.5
         visit menu_path menu
-        within('#js-table-comment') do
+        within('#comment_index') do
           expect(page).to have_content(comment_by_me.body)
           expect(page).to have_content(comment_by_me.user.name)
         end
