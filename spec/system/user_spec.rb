@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          # expect(page).to have_content 'User was successfully created.'
+          expect(page).to have_content 'ユーザー登録が完了しました'
           expect(page).to have_current_path login_path
         end
       end
@@ -26,8 +26,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          # expect(page).to have_content '1 error prohibited this user from being saved'
-          # expect(page).to have_content "Email can't be blank"
+          expect(page).to have_content 'ユーザー登録に失敗しました'
+          expect(page).to have_content "ユーザーネームを入力してください"
           expect(page).to have_current_path new_user_path
         end
       end
@@ -40,8 +40,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          # expect(page).to have_content '1 error prohibited this user from being saved'
-          # expect(page).to have_content "Email can't be blank"
+          expect(page).to have_content 'ユーザー登録に失敗しました'
+          expect(page).to have_content "メールアドレスを入力してください"
           expect(page).to have_current_path new_user_path
         end
       end
@@ -55,8 +55,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
-          # expect(page).to have_content '1 error prohibited this user from being saved'
-          # expect(page).to have_content 'Email has already been taken'
+          expect(page).to have_content 'ユーザー登録に失敗しました'
+          expect(page).to have_content 'メールアドレスはすでに存在します'
           expect(page).to have_current_path new_user_path
           expect(page).to have_field 'メールアドレス', with: existed_user.email
         end

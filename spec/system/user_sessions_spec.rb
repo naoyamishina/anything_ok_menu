@@ -10,7 +10,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        # expect(page).to have_content 'Login successful'
+        expect(page).to have_content 'ログインしました'
         expect(page).to have_current_path menus_path
       end
     end
@@ -21,7 +21,7 @@ RSpec.describe 'UserSessions', type: :system do
         fill_in 'メールアドレス', with: ''
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        # expect(page).to have_content 'Login failed'
+        expect(page).to have_content 'ログインに失敗しました'
         expect(page).to have_current_path login_path
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe 'UserSessions', type: :system do
         login_as(user)
         find('#header-profile').click
         click_link 'ログアウト'
-        # expect(page).to have_content 'Logged out'
+        expect(page).to have_content 'ログアウトしました'
         expect(page).to have_current_path root_path
       end
     end
