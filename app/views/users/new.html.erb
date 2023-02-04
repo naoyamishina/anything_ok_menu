@@ -1,29 +1,35 @@
 <% content_for(:title, t('.title')) %>
-<div class="container">
+<div class="container pt-3 mb-5 mt-3">
   <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1><%= t '.title' %></h1>
+    <div class="col-lg-4 mb-5 mx-auto border p-4 bg-light">
+      <h1 class="text-center mb-4"><%= t '.title' %></h1>
       <%= form_with model: @user, local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
+          <%= f.label :gender %>
+          <%= f.select :gender, User.genders_i18n.invert, {}, { class: 'form-select' } %>
+        </div>
+        <div class="form-group mb-3">
           <%= f.label :email %>
           <%= f.email_field :email, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
+        <div class='text-center mb-3'>
         <%= f.submit (t 'defaults.register'), class: 'btn btn-primary' %>
+        </div>
       <% end %>
-      <div class='text-center'>
+      <div class='text-center mb-2'>
         <%= link_to (t '.to_login_page'), login_path %>
       </div>
     </div>

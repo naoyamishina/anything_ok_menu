@@ -1,5 +1,17 @@
 <div class="top-wrapper">
   <div class="top-inner-text">
-    <h1 id = "sample">なんでもいい飯メニュー</h1>
+    <h1 class = "pb-2">なんでもいい飯メニュー</h1>
+    <h4 class = "pb-2">「何食べたい？」の答えを見つけよう</h4>
+    <div>
+      <span>
+        <%= link_to "ログイン", login_path, class: 'btn btn-danger' %>
+      </span>
+      <span>
+        <%= link_to "新規ユーザー登録", new_user_path, class: 'btn btn-success' %>
+      </span>
+    </div>
+    <div>
+      <%= link_to "ユーザー登録なしで閲覧", menus_path, class: 'btn btn-secondary mt-4' %>
+    </div>
   </div>
 </div>

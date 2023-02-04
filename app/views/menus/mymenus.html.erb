@@ -1,0 +1,23 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3 mb-5">
+  <%= render 'content_top' %>
+
+  <div class="row">
+      <!-- 検索フォーム -->
+      <%= render 'search_form', url: likes_menus_path %>
+  </div>
+  <!-- メニュー一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @my_menus.present? %>
+          <%= render @my_menus %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+      <!-- ページネーション -->
+      <%= paginate @my_menus %>
+    </div>
+  </div>
+</div>

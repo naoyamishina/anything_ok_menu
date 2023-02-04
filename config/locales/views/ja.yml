@@ -6,9 +6,10 @@ ja:
     post: '投稿'
     menu: "メニュー"
     menu_index: "メニュー一覧"
-    create_menu: "メニュー作成"
-    bookmark_index: "ブックマーク一覧"
-    profile: "プロフィール"
+    create_menu: "新メニュー作成"
+    edit: '編集'
+    search_menu: 'フリーワード'
+    detail: "詳細"
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -17,6 +18,14 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
+      profile_updated: "ユーザー情報を更新しました"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   users:
     new:
       title: 'ユーザー登録'
@@ -27,7 +36,7 @@ ja:
   user_sessions:
     new:
       title: 'ログイン'
-      to_register_page: '登録ページへ'
+      to_register_page: '新規登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
     create:
       success: 'ログインしました'
@@ -41,11 +50,17 @@ ja:
     new:
       title: 'メニュー作成'
     show:
-      title: '掲示板詳細'
+      title: 'メニュー詳細'
     edit:
-      title: '掲示板編集'
-    bookmarks:
-      title: 'ブックマーク一覧'
+      title: 'メニュー編集'
+    likes:
+      title: 'お気に入り一覧'
+      no_result: 'お気に入りのメニューがありません。'
+  likes:
+    create:
+      success: 'お気に入りしました'
+    destroy:
+      success: 'お気に入りを外しました'
   profiles:
-    show:
+    edit:
       title: 'プロフィール'

@@ -15,7 +15,7 @@ class MenuImageUploader < CarrierWave::Uploader::Base
 
   #画像がアップロードされてない時に、'sample.jpg'を表示する。この画像はassets/images配下に事前に配置しておく。
   def default_url
-    'sample.jpg'
+    'sample.jpeg'
   end
   
   #アップロードを許可するファイル種類を指定する。

@@ -58,8 +58,11 @@ gem "cssbundling-rails"
 
 gem 'carrierwave'
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem 'kaminari'
+
+gem 'ransack'
+
+gem 'enum_help'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -76,6 +79,7 @@ group :development, :test do
   gem "capybara"       
   gem "selenium-webdriver" 
   gem "webdrivers"  
+  gem 'faker'
 end
 
 group :development do

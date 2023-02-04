@@ -1,24 +1,27 @@
 <%= form_with model: menu, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="form-group">
+  <div class="form-group mb-3">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :memo %>
-    <%= f.text_area :memo, class: 'form-control', rows: 10 %>
+  <div class="form-group mb-3">
+    <%= f.label :eat_at %>
+    <%= f.select :eat_at, Menu.eat_ats_i18n.invert, {}, { class: 'form-select' } %>
   </div>
-  <div class="form-group">
+  <div class="form-group mb-3">
+    <%= f.label :memo %>
+    <%= f.text_area :memo, class: 'form-control', rows: 10, placeholder: "おすすめ商品や店名、どんな気分の時などご自由に！" %>
+  </div>
+  <div class="form-group mb-3">
     <%= f.label :menu_image %>
     <%= f.file_field :menu_image, onchange: 'previewImage()', class: 'form-control mb-3', accept: 'image/*' %>
     <%= f.hidden_field :menu_image_cache %>
   </div>
   <div>
     <%= image_tag menu.menu_image.url,
-                  class: 'rounded-circle',
+                  class: 'border mb-3',
                   id: 'preview',
-                  size: '100x100' %>
+                  size: '300x200' %>
   </div>
-
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-outline-danger' %>
 <% end %>
