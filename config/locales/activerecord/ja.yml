@@ -7,7 +7,7 @@ ja:
     attributes:
       user:
         email: 'メールアドレス'
-        password: 'パスワード (英数字3文字以上)'
+        password: 'パスワード'
         password_confirmation: 'パスワード確認'
         name: "ユーザーネーム"
         avatar: 'アバター'

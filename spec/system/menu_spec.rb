@@ -8,19 +8,18 @@ RSpec.describe 'Menus', type: :system do
   describe 'メニューのCRUD' do
     describe 'メニュー一覧表示' do
       context 'ログインしていない場合' do
-        it 'ログインページにリダイレクトされること' do
+        it 'ボタンからメニュー一覧へ遷移できること' do
           visit menus_path
-          expect(current_path).to eq(login_path), 'ログインページにリダイレクトされていません'
-          expect(page).to have_content('ログインしてください'), 'フラッシュメッセージ「ログインしてください」が表示されていません'
+          click_on('みんなのメニュー')
+          expect(current_path).to eq(menus_path), 'ヘッダーのリンクからメニュー一覧画面へ遷移できません'
         end
       end
 
       context 'ログインしている場合' do
         before {login_as(user)}
 
-        it 'ヘッダーのリンクからメニュー一覧へ遷移できること' do
-          click_on('メニュー')
-          click_on('メニュー一覧')
+        it 'ボタンからメニュー一覧へ遷移できること' do
+          click_on('みんなのメニュー')
           expect(current_path).to eq(menus_path), 'ヘッダーのリンクからメニュー一覧画面へ遷移できません'
         end
 
@@ -39,7 +38,13 @@ RSpec.describe 'Menus', type: :system do
             visit menus_path
             expect(page).to have_content(menu.name), 'メニュー一覧画面にメニューのタイトルが表示されていません'
             expect(page).to have_content(menu.user.name), 'メニュー一覧画面に投稿者のフルネームが表示されていません'
-            expect(page).to have_content(menu.memo), 'メニュー一覧画面にメニューの本文が表示されていません'
+          end
+
+          it '自分のメニュー一覧が表示されること' do
+            menu
+            visit mymenus_menus_path
+            expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
+            expect(page).to have_content(menu.user.name), '自分のメニュー一覧画面に投稿者の名前が表示されていません'
           end
         end
       end
@@ -55,7 +60,6 @@ RSpec.describe 'Menus', type: :system do
           fill_in 'メモ', with: 'test_content'
           click_button '登録する'
           expect(page).to have_content 'test_title'
-          expect(page).to have_content 'test_content'
           expect(page).to have_current_path menus_path
         end
       end

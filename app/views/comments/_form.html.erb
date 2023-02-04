@@ -1,16 +1,12 @@
 <div class="row">
-  <div class="col-lg-6 offset-lg-3 mb-2 border p-4 bg-light">
+  <div class="col-lg-6 offset-lg-3 mb-2 border p-3 bg-light">
     <%= form_with model: comment, url: [menu, comment], id: 'new_comment' do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class='mb-2'>
-        <%= f.label :body %>
+        <%= f.label :body ,class: 'mb-2' %>
+        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5, placeholder: "1 ~ 65,535 文字" %>
       </div>
-      <div>
-        <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', rows: 5 %>
-      </div>
-      <div class='text-left'>
-        <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger' %>
-      </div>
+      <%= f.submit t('defaults.post'), class: 'btn btn-outline-danger', id: 'js-comment-create-btn' %>
     <% end %>
   </div>
 </div>
