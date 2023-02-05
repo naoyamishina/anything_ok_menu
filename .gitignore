@@ -24,7 +24,7 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
-!/tmp/sockets/*
+!/tmp/mysql.sock
 
 /public/assets
 
