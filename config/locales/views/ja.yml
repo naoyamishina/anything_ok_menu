@@ -58,6 +58,7 @@ ja:
       no_result: 'お気に入りのメニューがありません。'
     mymenus:
       title: '自分のメニュー一覧'
+      no_result: 'メニューがありません。'
   likes:
     create:
       success: 'お気に入りしました'
