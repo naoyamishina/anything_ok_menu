@@ -5,4 +5,5 @@ set -e
 bin/rails db:migrate
 #bin/rails db:seed #必要なければコメントアウト
 
+
 rm -f tmp/pids/server.pid && bin/rails s
