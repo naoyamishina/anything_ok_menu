@@ -53,3 +53,4 @@ production:
   database: anything_ok_menu_production
   username: anything_ok_menu
   password: <%= ENV["ANYTHING_OK_MENU_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
