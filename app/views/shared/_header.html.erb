@@ -7,7 +7,7 @@
       <ul class='navbar-nav ms-auto main-nav align-items-center'>
 
         <li class='nav-item d-none d-lg-block'>
-          <%= link_to t('defaults.create_menu'), new_menu_path, class: 'btn btn-outline-danger' %>
+          <%= link_to t('defaults.create_menu'), new_menu_path, class: 'btn btn-danger' %>
         </li>
 
         <li class='nav-item dropdown dropdown-slide'>
@@ -23,6 +23,6 @@
       </ul>
 
     <div class="d-lg-none fixed-bottom d-flex justify-content-end m-4">
-      <%= link_to t('defaults.create_menu'), new_menu_path, class: 'btn btn-danger'%>
+      <%= link_to t('defaults.create_menu'), new_menu_path, class: "btn btn-danger #{display_unless('menus#new')}" %>
     </div>
 </header>

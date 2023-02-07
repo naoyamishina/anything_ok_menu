@@ -22,16 +22,16 @@
               <li class="list-inline-item mb-1">by <%= @menu.user.name %></li>
               <br/>
               <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+              <li class="list-inline-item" style="float: right;">
+                <% if logged_in? %>
+                  <% if current_user.own?(@menu) %>
+                    <%= render 'crud_menus', menu: @menu %>
+                  <% else %>
+                    <%= render 'like_button', menu: @menu  %>
+                  <% end %>
+                <% end %>
+              </li>
             </ul>
-          </div>
-          <div class='mb-2'>
-          <% if logged_in? %>
-            <% if current_user.own?(@menu) %>
-              <%= render 'crud_menus', menu: @menu %>
-            <% else %>
-              <%= render 'like_button', menu: @menu  %>
-            <% end %>
-          <% end %>
           </div>
         </div>
       </article>
