@@ -2,6 +2,7 @@
 <div class="container pt-3 mb-5 mt-3">
   <div class="col-lg-6 mb-5 mx-auto border p-4 bg-light">
     <h1 class="text-center mb-3"><%= t '.title' %></h1>
+    <p class="text-center mb-4"><%= t('password_resets.new.describe') %></p>
       <%= form_with url: password_resets_path, local: true do |f| %>
         <div class="form-group mb-3">
           <%= f.label :email, User.human_attribute_name(:email) %><br />

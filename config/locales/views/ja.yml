@@ -72,6 +72,7 @@ ja:
     new:
       title: 'パスワードリセット申請'
       submit: '送信'
+      describe: 'リセットページへのリンクをメール送信します'
     edit:
       title: 'パスワードリセット'
     create:
