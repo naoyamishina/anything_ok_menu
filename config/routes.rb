@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i[create destroy]
   resource :profile, only: %i[edit update]
+  resources :password_resets, only: %i[new create edit update]
 end
