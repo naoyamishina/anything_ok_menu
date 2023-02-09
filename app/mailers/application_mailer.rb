@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'anything-ok-menu.magia.runteq.jp'
   layout 'mailer'
 end
