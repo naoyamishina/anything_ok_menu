@@ -25,6 +25,12 @@
           <li class="list-inline-item">
             <%= l menu.created_at, format: :long %>
           </li>
+          <li class="list-inline-item">
+            <!--postに紐づいたtag-->
+            <% menu.tags.each do |tag|%>
+              <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), class: "badge rounded-pill bg-primary text-decoration-none text-white"%>
+            <% end %>
+          </li>
           <li class="list-inline-item" style="float: right;">
             <% if logged_in? %>
               <% if current_user.own?(menu) %>
