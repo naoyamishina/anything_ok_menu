@@ -67,6 +67,7 @@ class MenusController < ApplicationController
   end
 
   def search_tag
+    @q = Menu.ransack(params[:q])
     # 検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     # 検索されたタグに紐づく投稿を表示

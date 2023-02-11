@@ -31,6 +31,12 @@
                   <% end %>
                 <% end %>
               </li>
+              <p class="pt-2 mb-0">
+              <!--tag一覧-->
+                <% @menu.tags.each do |tag|%>
+                  <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
+                <% end %>
+              </p>
             </ul>
           </div>
         </div>
