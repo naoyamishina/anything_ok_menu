@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <title><%= page_title(yield(:title), admin: true) %></title>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'admin', media: 'all' %>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
