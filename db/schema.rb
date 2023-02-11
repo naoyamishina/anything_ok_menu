@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_11_011824) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_11_110422) do
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_011824) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "menu_tags", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "menu_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id", "tag_id"], name: "index_menu_tags_on_menu_id_and_tag_id", unique: true
+    t.index ["menu_id"], name: "index_menu_tags_on_menu_id"
+    t.index ["tag_id"], name: "index_menu_tags_on_tag_id"
+  end
+
   create_table "menus", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "memo"
@@ -40,6 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_011824) do
     t.string "menu_image"
     t.integer "eat_at", default: 0, null: false
     t.index ["user_id"], name: "index_menus_on_user_id"
+  end
+
+  create_table "tags", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -64,5 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_011824) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "menus"
   add_foreign_key "likes", "users"
+  add_foreign_key "menu_tags", "menus"
+  add_foreign_key "menu_tags", "tags"
   add_foreign_key "menus", "users"
 end
