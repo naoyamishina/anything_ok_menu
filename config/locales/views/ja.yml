@@ -7,6 +7,9 @@ ja:
     menu: "メニュー"
     menu_index: "メニュー一覧"
     create_menu: "新メニュー作成"
+    show: '詳細'
+    delete: '削除'
+    unspecified: '指定なし'
     edit: '編集'
     search_menu: 'フリーワード'
     detail: "詳細"
@@ -90,6 +93,20 @@ ja:
         fail: 'ログインに失敗しました'
       destroy:
         success: 'ログアウトしました'
-    dashboards:
+    dashmenus:
       index:
         title: 'ダッシュボード'
+    users:
+      index:
+        title: 'ユーザー一覧'
+      edit:
+        title: 'ユーザー編集'
+      show:
+        title: 'ユーザー詳細'
+    menus:
+      index:
+        title: 'メニュー一覧'
+      edit:
+        title: 'メニュー編集'
+      show:
+        title: 'メニュー詳細'

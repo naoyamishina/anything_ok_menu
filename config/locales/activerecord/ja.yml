@@ -12,19 +12,28 @@ ja:
         name: "ユーザーネーム"
         avatar: 'アバター'
         gender: '性別'
+        role: '権限'
       menu:
         name: 'メニュー名'
         memo: 'メモ'
         menu_image: 'イメージ写真'
         eat_at: '食事のタイミング'
+        user: '作成者'
       comment:
         body: 'コメント'
+  attributes:
+      id: 'ID'
+      created_at: '作成日時'
+      updated_at: '更新日時'
   enums:
     user:
       gender:
         other: 'その他'
         man: '男性'
         woman: '女性'
+      role:
+        general: '一般'
+        admin: '管理者'
     menu:
       eat_at:
         anytime: 'いつでも'
