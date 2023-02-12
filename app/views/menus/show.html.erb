@@ -18,6 +18,12 @@
             <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border', size: '300x200' %>
           </div>
           <div>
+            <p class="pt-2 mb-1">
+            <!--tag一覧-->
+              <% @menu.tags.each do |tag|%>
+                <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
+              <% end %>
+            </p>
             <ul class="list-inline">
               <li class="list-inline-item mb-1">by <%= @menu.user.name %></li>
               <br/>
@@ -31,12 +37,16 @@
                   <% end %>
                 <% end %>
               </li>
-              <p class="pt-2 mb-0">
-              <!--tag一覧-->
-                <% @menu.tags.each do |tag|%>
-                  <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
+            </ul>
+            <ul class="list-inline">
+              <li class="list-inline-item" style="float: right;">
+                <% if logged_in? %>
+                <%# LINEシェア %>
+                  <%= link_to "LINE", "http://line.me/R/msg/text/?「#{@menu.name}」がシェアされました%0a#{request.url}%0ali" , class: "btn btn-success btn-sm"%>
+                  <%# Twitterシェア %>
+                  <%= link_to "Twitter", "https://twitter.com/share?url=#{request.url}&text=「#{@menu.name}」をシェア!", class: "btn btn-primary btn-sm", title: 'Twitter', target: '_blank' %>
                 <% end %>
-              </p>
+              </li>
             </ul>
           </div>
         </div>
