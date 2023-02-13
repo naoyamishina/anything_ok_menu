@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login
   
   def new
     @user = User.new
@@ -14,6 +14,11 @@ class UsersController < ApplicationController
       flash.now[:danger] = t('.fail')
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show 
+    @user = User.find(params[:id])
+    @menus = @user.menus.includes([:likes, :tags]).order(created_at: :desc).page(params[:page])
   end
 
   private

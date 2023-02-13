@@ -36,10 +36,10 @@
         <li class="list-inline-item" style="float: right;">
           <% if logged_in? %>
             <% if current_user.own?(menu) %>
-              <%= render 'crud_menus', menu: menu %>
-            <% else %>
-              <%= render 'like_button', menu: menu  %>
+              <%= render 'menus/crud_menus', menu: menu %>
             <% end %>
+              <%= render 'menus/like_button', menu: menu  %>
+            
           <% end %>
         </li>
       </ul>

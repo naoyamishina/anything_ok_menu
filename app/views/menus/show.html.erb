@@ -25,7 +25,10 @@
               <% end %>
             </p>
             <ul class="list-inline">
-              <li class="list-inline-item mb-1">by <%= @menu.user.name %></li>
+              <li class="list-inline-item mb-1">
+                <%= image_tag @menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
+              </li>
+              <li class="list-inline-item mb-1"><%= @menu.user.name %></li>
               <br/>
               <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
               <li class="list-inline-item" style="float: right;">
