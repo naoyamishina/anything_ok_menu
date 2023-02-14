@@ -18,17 +18,19 @@
             <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border', size: '300x200' %>
           </div>
           <div>
-            <p class="pt-2 mb-1">
+            <p class="pt-2 mb-2">
             <!--tag一覧-->
               <% @menu.tags.each do |tag|%>
                 <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
               <% end %>
             </p>
             <ul class="list-inline">
+              <%= link_to user_path(@menu.user), class: "link-color-black text-dark" do %>
               <li class="list-inline-item mb-1">
                 <%= image_tag @menu.user.avatar_url, size: '45x45', class: 'rounded-circle mr15' %>
               </li>
               <li class="list-inline-item mb-1"><%= @menu.user.name %></li>
+              <% end %>
               <br/>
               <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
               <li class="list-inline-item" style="float: right;">
