@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def like?(menu)
     menu.likes.pluck(:user_id).include?(id)
   end
+
+  def eat(menu)
+    eat_menus << menu
+  end
 end
