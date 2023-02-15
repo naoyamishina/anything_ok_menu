@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   resources :menus do
     resources :comments, only: %i[create destroy], shallow: true
     collection do
-      get :likes
-      get :mymenus
       get :search_tag
     end
   end

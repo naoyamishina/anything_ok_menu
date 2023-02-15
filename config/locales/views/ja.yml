@@ -73,7 +73,7 @@ ja:
       success: 'お気に入りを外しました'
   profiles:
     edit:
-      title: 'プロフィール'
+      title: 'プロフィール編集'
   password_resets:
     new:
       title: 'パスワードリセット申請'
