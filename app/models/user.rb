@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_menus, through: :likes, source: :menu
+  has_many :eats, dependent: :destroy
+  has_many :eat_menus, through: :eats, source: :menu
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
