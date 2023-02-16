@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get :likes
+    get :eats
   end
   resources :menus do
     resources :comments, only: %i[create destroy], shallow: true

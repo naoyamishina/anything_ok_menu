@@ -23,7 +23,12 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:user_id])
-    @like_menus = @user.like_menus.includes([:user, :likes]).order(created_at: :desc).page(params[:page])
+    @like_menus = @user.like_menus.includes([:user, :likes, :tags, :eats]).order(created_at: :desc).page(params[:page])
+  end
+
+  def eats
+    @user = User.find(params[:user_id])
+    @eat_menus = @user.eats.includes([:user, :menu]).order(created_at: :desc).page(params[:page])
   end
 
   private
