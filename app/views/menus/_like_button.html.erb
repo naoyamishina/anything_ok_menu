@@ -1,6 +1,5 @@
-
-  <% if current_user.like?(menu) %>
-    <%= render 'menus/unlike', { menu: menu } %>
-  <% else %>
-    <%= render 'menus/like', { menu: menu } %>
-  <% end %>
+<% if current_user.like?(menu) %>
+  <%= render 'menus/unlike', { menu: menu } %>
+<% else %>
+  <%= render 'menus/like', { menu: menu } %>
+<% end %>

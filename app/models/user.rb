@@ -38,4 +38,5 @@ class User < ApplicationRecord
   def eat(menu)
     eat_menus << menu
   end
+
 end
