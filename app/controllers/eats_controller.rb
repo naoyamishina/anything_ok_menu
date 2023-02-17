@@ -8,7 +8,9 @@ class EatsController < ApplicationController
     #対象メニュー特定し、eatsテーブルにユーザーid、メニューidをcreate
     @menu = Menu.find(params[:menu_id])
     current_user.eat(@menu)
-    redirect_to eats_path, success: t('defaults.message.created', item: Comment.model_name.human)
+    redirect_back_or_to(fallback_location: activities_path)
+    flash['success'] = "アクティビティに登録しました"
+    # flash['success'] = t('defaults.message.deleted', item: Menu.model_name.human)
   end
 
   def destroy
