@@ -1,13 +1,44 @@
 module ApplicationHelper
-  # ページネーション
-  def page_title(page_title = '', admin = false)
-    base_title = if admin
-      'なんでもいい飯メニュー(管理画面)'
-    else
-      'なんでもいい飯メニュー'
-    end
 
-    page_title.empty? ? base_title : page_title + ' | ' + base_title
+  def show_meta_tags
+    assign_meta_tags if display_meta_tags.blank?
+    display_meta_tags
+  end
+
+  def assign_meta_tags(options = {})
+    defaults = t('meta_tags.defaults')
+    options.reverse_merge!(defaults)
+    site = options[:site]
+    title = options[:title]
+    description = options[:description]
+    keywords = options[:keywords]
+    image = options[:image].presence || image_url('menu_placeholder.png')
+    configs = {
+      separator: '|',
+      reverse: true,
+      site:,
+      title:,
+      description:,
+      keywords:,
+      canonical: request.original_url,
+      icon: {
+        href: image_url('favicon.png')
+      },
+      og: {
+        type: 'website',
+        title: title.presence || site,
+        description:,
+        url: request.original_url,
+        image:,
+        site_name: site
+      },
+      twitter: {
+        site:,
+        card: 'summary_large_image',
+        image:
+      }
+    }
+    set_meta_tags(configs)
   end
 
   # アクティブ・非アクティブ化
@@ -47,21 +78,5 @@ module ApplicationHelper
   # ボタンの表示、非表示
   def display_unless(*names)
     'd-none' if active_menu?(*names)
-  end
-
-  def active_menu?(*names)
-    active_namespace?(*names) || active_controller?(*names) || active_action?(*names)
-  end
-
-  def active_controller?(*names)
-    names.any?(controller_path)
-  end
-
-  def active_namespace?(*namespaces)
-    namespaces.any? { |namespace| controller_path.start_with?(namespace) }
-  end
-
-  def active_action?(*names)
-    names.any?("#{controller_path}##{action_name}")
   end
 end
