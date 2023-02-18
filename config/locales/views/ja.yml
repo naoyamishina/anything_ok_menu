@@ -38,6 +38,15 @@ ja:
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
+    show:
+      title: 'ユーザー'
+      no_result: 'メニューがありません。'
+    likes:
+      title: 'お気に入り一覧'
+      no_result: 'お気に入りのメニューがありません。'
+    activities:
+      title: 'ユーザーアクティビティ'
+      no_result: '記録がありません。'
   user_sessions:
     new:
       title: 'ログイン'
@@ -58,9 +67,6 @@ ja:
       title: 'メニュー詳細'
     edit:
       title: 'メニュー編集'
-    likes:
-      title: 'お気に入り一覧'
-      no_result: 'お気に入りのメニューがありません。'
     mymenus:
       title: '自分のメニュー一覧'
       no_result: 'メニューがありません。'
@@ -74,6 +80,14 @@ ja:
   profiles:
     edit:
       title: 'プロフィール編集'
+  eats:
+    index:
+      title: 'アクティビティ'
+      no_result: '記録がありません。'
+    create:
+      success: 'アクティビティに登録しました'
+    destroy:
+      success: 'アクティビティから外しました'
   password_resets:
     new:
       title: 'パスワードリセット申請'

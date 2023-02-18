@@ -9,8 +9,7 @@ class EatsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     current_user.eat(@menu)
     redirect_back_or_to(fallback_location: activities_path)
-    flash['success'] = "アクティビティに登録しました"
-    # flash['success'] = t('defaults.message.deleted', item: Menu.model_name.human)
+    flash['success'] = t('eats.create.success')
   end
 
   def destroy

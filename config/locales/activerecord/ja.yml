@@ -22,6 +22,8 @@ ja:
         tag_name: タグ
       comment:
         body: 'コメント'
+      tag:
+        name: 'タグ名'
   attributes:
       id: 'ID'
       created_at: '作成日時'
