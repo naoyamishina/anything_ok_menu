@@ -9,14 +9,14 @@
         <% end %>
       </div>
       <div>
+        <h5 class="mb-3">
+          <%= link_to menu_path(eat.menu), class: "text-dark" do %>
+            <%= eat.menu.name %>
+          <% end %>
+          を食べたい!
+        </h5>
         <p>
-        <%= link_to menu_path(eat.menu), class: "text-dark" do %>
-          <%= eat.menu.name %>
-        <% end %>
-        を食べたい!
-        </p>
-        <p>
-        <%= link_to menu_path(eat.menu), class: "text-dark" do %>
+        <%= link_to menu_path(eat.menu), class: "text-decoration-none text-success" do %>
           メニューへコメントする
         <% end %>
         </p>

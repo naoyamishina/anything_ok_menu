@@ -31,6 +31,13 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  static_pages:
+    top:
+      title: "トップページ"
+    privacy: 
+      title: "プライバシーポリシー"
+    terms:
+      title: "利用規約"
   users:
     new:
       title: 'ユーザー登録'
