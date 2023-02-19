@@ -6,8 +6,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :menus, dependent: :destroy 
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :like_menus, through: :likes, source: :menu
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_menus, through: :bookmarks, source: :menu
   has_many :eats, dependent: :destroy
   has_many :eat_menus, through: :eats, source: :menu
 
@@ -23,16 +23,16 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
-  def like(menu)
-    like_menus << menu
+  def bookmark(menu)
+    bookmark_menus << menu
   end
 
-  def unlike(menu)
-    like_menus.destroy(menu)
+  def unbookmark(menu)
+    bookmark_menus.destroy(menu)
   end
 
-  def like?(menu)
-    menu.likes.pluck(:user_id).include?(id)
+  def bookmark?(menu)
+    menu.bookmarks.pluck(:user_id).include?(id)
   end
 
   def eat(menu)

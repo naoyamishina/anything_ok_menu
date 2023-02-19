@@ -24,7 +24,7 @@
         <%= link_to t('アクティビティ'), user_activities_path(user), class: "btn btn-outline-danger mx-3 #{active_if('users#activities')}" %>
       </li>
       <li class="nav-item m-2 mb-1" role="presentation">
-        <%= link_to t('お気に入り一覧'), user_likes_path(user), class: "btn btn-outline-danger mx-1 #{active_if('users#likes')}" %>
+        <%= link_to t('お気に入り一覧'), user_bookmarks_path(user), class: "btn btn-outline-danger mx-1 #{active_if('users#bookmarks')}" %>
       </li>
     </ul>
   </div>

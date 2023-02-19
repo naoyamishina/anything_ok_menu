@@ -4,7 +4,7 @@ class MenusController < ApplicationController
 
   def index
     @q = Menu.ransack(params[:q])
-    @menus = @q.result(distinct: true).includes([:user, :likes, :tags, :eats, :comments]).order(created_at: :desc).page(params[:page])
+    @menus = @q.result(distinct: true).includes([:user, :bookmarks, :tags, :eats, :comments]).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -64,7 +64,7 @@ class MenusController < ApplicationController
   end
 
   def ranking
-    menus = Menu.all.includes([:user, :likes, :tags, :eats, :comments])
+    menus = Menu.all.includes([:user, :bookmarks, :tags, :eats, :comments])
     @menus = menus.find(Eat.group(:menu_id).order('count(menu_id) desc').limit(20).pluck(:menu_id))
   end
 
