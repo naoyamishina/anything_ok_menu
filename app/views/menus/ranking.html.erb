@@ -2,9 +2,14 @@
 <div class="container pt-3 mb-5">
   <%= render 'content_top' %>
 
-  <h4 class="text-center p-1 mb-3 border-bottom">
-    <%= "「#{@tag.name}」に関連するメニュー" %>
-  </h4>
+  <%
+=begin%>
+ <div class="row">
+      <!-- 検索フォーム -->
+      <%= render 'search_form', url: menus_path %>
+  </div> 
+<%
+=end%>
   <!-- 掲示板一覧 -->
   <div class="row">
     <div class="col-12">
@@ -15,8 +20,6 @@
           <p><%= t('.no_result') %></p>
         <% end %>
       </div>
-      <!-- ページネーション -->
-      <%= paginate @menus %>
     </div>
   </div>
 </div>

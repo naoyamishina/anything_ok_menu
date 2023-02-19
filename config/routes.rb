@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy], shallow: true
     collection do
       get :search_tag
+      get :ranking
     end
   end
   resources :likes, only: %i[create destroy]

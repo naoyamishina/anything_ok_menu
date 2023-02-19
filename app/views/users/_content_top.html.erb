@@ -6,7 +6,7 @@
             <%= image_tag user.avatar_url, size: '80x80', class: 'rounded-circle mr15 mx-3'%>
             <%= user.name %>
             <% if current_user.id == user.id %>
-              <%= link_to t('profiles.edit.title'), edit_profile_path, class: 'btn btn-outline-success mx-4' %>
+              <%= link_to t('profiles.edit.title'), edit_profile_path, class: 'btn btn-outline-success mx-4 my-2' %>
             <% end %>
           </li>
         </ul>

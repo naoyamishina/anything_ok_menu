@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   end
 
   def show 
-    @menus = @user.menus.includes([:likes, :tags]).order(created_at: :desc).page(params[:page])
+    @menus = @user.menus.includes([:likes, :tags, :comments, :eats]).order(created_at: :desc).page(params[:page])
   end
 
   def likes
     @user = User.find(params[:user_id])
-    @like_menus = @user.like_menus.includes([:user, :likes, :tags, :eats]).order(created_at: :desc).page(params[:page])
+    @like_menus = @user.like_menus.includes([:user, :likes, :tags, :eats, :comments]).order(created_at: :desc).page(params[:page])
   end
 
   def activities

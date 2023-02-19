@@ -74,8 +74,8 @@ ja:
       title: 'メニュー詳細'
     edit:
       title: 'メニュー編集'
-    mymenus:
-      title: '自分のメニュー一覧'
+    ranking:
+      title: '食べた上位メニュー'
       no_result: 'メニューがありません。'
     search_tag:
       title: 'メニュー一覧'
