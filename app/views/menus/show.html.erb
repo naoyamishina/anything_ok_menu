@@ -7,6 +7,12 @@
         <div class="card-body">
           <div class='mb-3'>
             <h2 class="d-inline"><%= @menu.name %></h2>
+            <p class="pt-2 mb-2">
+            <!--tag一覧-->
+              <% @menu.tags.each do |tag|%>
+                <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
+              <% end %>
+            </p>
           </div>
           <h5 class="mb-2 <%= eat_at_color_if(@menu.eat_at_i18n) %>">
             <%= @menu.eat_at_i18n %>
@@ -18,12 +24,6 @@
             <%= image_tag @menu.menu_image.url, class: 'card-img-top img-fluid border' %>
           </div>
           <div>
-            <p class="pt-2 mb-2">
-            <!--tag一覧-->
-              <% @menu.tags.each do |tag|%>
-                <%=link_to tag.name,search_tag_menus_path(tag_id: tag.id), id: "tag-link", class: "badge rounded-pill border border-danger text-decoration-none text-danger"%>
-              <% end %>
-            </p>
             <ul class="list-inline">
               <%= link_to user_path(@menu.user), class: "link-color-black text-dark" do %>
               <li class="list-inline-item mb-1">
