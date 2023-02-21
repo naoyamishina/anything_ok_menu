@@ -73,7 +73,7 @@ module ApplicationHelper
     elsif object == "夕食"
       'text-primary'
     elsif object == "間食"
-      'text-info'
+      'text-warning'
     end
   end
 
