@@ -36,7 +36,7 @@ class MenusController < ApplicationController
   end
 
   def update
-    tag_list = params[:menu][:tag_name].gsub(" ", "").gsub("、", ",").split(',').uniq
+    tag_list = params[:menu][:tag_name].gsub(/ |　|、/, " " => "", "　" => "", "、" => ",").split(',').uniq
     if @menu.update(menu_params)
       @old_relations = MenuTag.where(menu_id: @menu.id)
       @old_relations.each do |relation|
