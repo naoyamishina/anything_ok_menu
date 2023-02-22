@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:edit, :update, :destroy]
-  skip_before_action :require_login, only: %i[index show search_tag]
+  skip_before_action :require_login, only: %i[index show search_tag ranking]
 
   def index
     @q = Menu.ransack(params[:q])
