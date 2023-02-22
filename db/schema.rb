@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_103907) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
   create_table "bookmarks", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "menu_id", null: false
@@ -59,6 +59,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_103907) do
     t.string "menu_image"
     t.integer "eat_at", default: 0, null: false
     t.index ["user_id"], name: "index_menus_on_user_id"
+  end
+
+  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "menu_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["menu_id"], name: "index_notifications_on_menu_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "tags", charset: "utf8mb4", force: :cascade do |t|

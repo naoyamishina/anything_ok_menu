@@ -8,6 +8,7 @@ class Menu < ApplicationRecord
   has_many :menu_tags, dependent: :destroy
   has_many :tags, through: :menu_tags
   has_many :eats, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :memo, length: { maximum: 65_535 }
