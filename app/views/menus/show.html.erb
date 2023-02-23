@@ -32,7 +32,7 @@
               <li class="list-inline-item mb-1"><%= @menu.user.name %></li>
               <% end %>
               <br/>
-              <li class="list-inline-item"><%= l @menu.created_at, format: :long  %></li>
+              <li class="list-inline-item text-muted"><%= l @menu.created_at, format: :long  %></li>
               <li class="list-inline-item" style="float: right;">
                 <% if logged_in? %>
                   <% if current_user.own?(@menu) %>

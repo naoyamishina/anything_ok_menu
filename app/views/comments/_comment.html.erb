@@ -13,7 +13,7 @@
       </div>
 
       <ul class="list-inline mb-0 justify-content-center m-0">
-        <li class="list-inline-item">
+        <li class="list-inline-item text-muted">
           <%= l comment.created_at, format: :long %>
         </li>
         <% if logged_in? && current_user.own?(comment) %>
