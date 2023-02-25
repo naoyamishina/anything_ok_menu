@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
+  get 'activities', to: 'eats#index'
+
   resources :users do
     get :likes
+    get :activities
   end
   resources :menus do
     resources :comments, only: %i[create destroy], shallow: true
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: %i[create destroy]
+  resources :eats, only: %i[create destroy]
   resource :profile, only: %i[edit update]
   resources :password_resets, only: %i[new create edit update]
 

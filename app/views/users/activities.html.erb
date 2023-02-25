@@ -1,0 +1,6 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3 mb-5">
+  <%= render partial: 'content_top', locals: {user: @user}  %>  
+
+  <%= render partial: 'eats/eat', collection: @eat_menus %>
+</div>

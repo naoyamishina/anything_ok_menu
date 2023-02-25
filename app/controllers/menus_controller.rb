@@ -4,7 +4,7 @@ class MenusController < ApplicationController
 
   def index
     @q = Menu.ransack(params[:q])
-    @menus = @q.result(distinct: true).includes([:user, :likes, :tags]).order(created_at: :desc).page(params[:page])
+    @menus = @q.result(distinct: true).includes([:user, :likes, :tags, :eats]).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -54,6 +54,11 @@ class MenusController < ApplicationController
     @menu.destroy!
     redirect_back_or_to(fallback_location: menus_path, status: :see_other)
     flash['success'] = t('defaults.message.deleted', item: Menu.model_name.human)
+  end
+
+  def likes
+    @q = current_user.like_menus.ransack(params[:q])
+    @like_menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
   end
 
   def search_tag
