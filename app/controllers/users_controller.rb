@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :set_user, only: %i[show]
   
   def new
     @user = User.new
@@ -16,7 +17,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def show 
+    @menus = @user.menus.includes([:likes, :tags]).order(created_at: :desc).page(params[:page])
+  end
+
+  def likes
+    @user = User.find(params[:user_id])
+    @like_menus = @user.like_menus.includes([:user, :likes]).order(created_at: :desc).page(params[:page])
+  end
+
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :gender)

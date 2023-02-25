@@ -56,16 +56,6 @@ class MenusController < ApplicationController
     flash['success'] = t('defaults.message.deleted', item: Menu.model_name.human)
   end
 
-  def likes
-    @q = current_user.like_menus.ransack(params[:q])
-    @like_menus = @q.result(distinct: true).includes([:user, :likes]).order(created_at: :desc).page(params[:page])
-  end
-
-  def mymenus
-    @q = current_user.menus.ransack(params[:q])
-    @my_menus = @q.result(distinct: true).includes([:user]).order(created_at: :desc).page(params[:page])
-  end
-
   def search_tag
     @q = Menu.ransack(params[:q])
     # 検索されたタグを受け取る

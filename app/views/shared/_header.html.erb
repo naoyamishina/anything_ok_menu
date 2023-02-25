@@ -7,7 +7,8 @@
       <ul class='navbar-nav ms-auto main-nav align-items-center'>
 
         <li class='nav-item d-none d-lg-block'>
-          <%= link_to t('defaults.create_menu'), new_menu_path, class: 'btn btn-danger' %>
+          <%= link_to t('defaults.create_menu'), new_menu_path, class: 'btn btn-danger btn-sm mx-1' %>
+          <%= link_to t('マイページ'), user_path(current_user.id), class: 'btn btn-danger btn-sm mx-1' %>
         </li>
 
         <li class='nav-item dropdown dropdown-slide'>
@@ -15,14 +16,15 @@
             <%= image_tag current_user.avatar_url, size: '40x40', class: 'rounded-circle mr15'%>
           <% end %>
           <div class='dropdown-menu dropdown-menu-end'>
-            <%= link_to "#{current_user.name}", edit_profile_path, class: 'dropdown-item border-bottom pb-2' %>
+            <%= link_to "#{current_user.name}", user_path(current_user.id), class: 'dropdown-item border-bottom pb-2' %>
             <%= link_to t('profiles.edit.title'), edit_profile_path, class: 'dropdown-item py-2' %>
             <%= link_to t('defaults.logout'), logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
           </div>
         </li>
       </ul>
 
-    <div class="d-lg-none fixed-bottom d-flex justify-content-end m-4">
+    <div class="d-lg-none fixed-bottom d-flex justify-content-center p-3 bg-white">
+      <%= link_to t('マイページ'), user_path(current_user.id), class: "btn btn-danger mx-3 #{display_unless('users#show')}" %>
       <%= link_to t('defaults.create_menu'), new_menu_path, class: "btn btn-danger #{display_unless('menus#new')}" %>
     </div>
 </header>
