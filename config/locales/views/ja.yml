@@ -10,6 +10,7 @@ ja:
     edit: '編集'
     search_menu: 'フリーワード'
     detail: "詳細"
+    password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -67,3 +68,15 @@ ja:
   profiles:
     edit:
       title: 'プロフィール'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+      describe: 'リセットページへのリンクをメール送信します'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
