@@ -39,7 +39,7 @@
             <% if current_user.own?(menu) %>
               <%= render 'menus/crud_menus', menu: menu %>
             <% end %>
-              <%= render 'menus/like_button', menu: menu  %>
+              <%= render 'menus/bookmark_button', menu: menu  %>
             
           <% end %>
         </li>

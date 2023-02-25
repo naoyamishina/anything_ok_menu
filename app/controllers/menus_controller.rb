@@ -4,7 +4,7 @@ class MenusController < ApplicationController
 
   def index
     @q = Menu.ransack(params[:q])
-    @menus = @q.result(distinct: true).includes([:user, :likes, :tags, :eats]).order(created_at: :desc).page(params[:page])
+    @menus = @q.result(distinct: true).includes([:user, :bookmarks, :tags, :eats, :comments]).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -36,7 +36,7 @@ class MenusController < ApplicationController
   end
 
   def update
-    tag_list = params[:menu][:tag_name].gsub(" ", "").gsub("、", ",").split(',').uniq
+    tag_list = params[:menu][:tag_name].gsub(/ |　|、/, " " => "", "　" => "", "、" => ",").split(',').uniq
     if @menu.update(menu_params)
       @old_relations = MenuTag.where(menu_id: @menu.id)
       @old_relations.each do |relation|
@@ -57,11 +57,15 @@ class MenusController < ApplicationController
   end
 
   def search_tag
-    @q = Menu.ransack(params[:q])
     # 検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     # 検索されたタグに紐づく投稿を表示
-    @menus = @tag.menus.page(params[:page]).per(10)
+    @menus = @tag.menus.order(created_at: :desc).page(params[:page])
+  end
+
+  def ranking
+    menus = Menu.all.includes([:user, :bookmarks, :tags, :eats, :comments])
+    @menus = menus.find(Eat.group(:menu_id).order('count(menu_id) desc').limit(20).pluck(:menu_id))
   end
 
   private

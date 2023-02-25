@@ -1,0 +1,5 @@
+<% if current_user.bookmark?(menu) %>
+  <%= render 'menus/unbookmark', { menu: menu } %>
+<% else %>
+  <%= render 'menus/bookmark', { menu: menu } %>
+<% end %>

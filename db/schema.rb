@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_103408) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_103907) do
+  create_table "bookmarks", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "menu_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_bookmarks_on_menu_id"
+    t.index ["user_id", "menu_id"], name: "index_bookmarks_on_user_id_and_menu_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
@@ -28,16 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_103408) do
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_eats_on_menu_id"
     t.index ["user_id"], name: "index_eats_on_user_id"
-  end
-
-  create_table "likes", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "menu_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_likes_on_menu_id"
-    t.index ["user_id", "menu_id"], name: "index_likes_on_user_id_and_menu_id", unique: true
-    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "menu_tags", charset: "utf8mb4", force: :cascade do |t|
@@ -85,12 +85,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_103408) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "bookmarks", "menus"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "menus"
   add_foreign_key "comments", "users"
   add_foreign_key "eats", "menus"
   add_foreign_key "eats", "users"
-  add_foreign_key "likes", "menus"
-  add_foreign_key "likes", "users"
   add_foreign_key "menu_tags", "menus"
   add_foreign_key "menu_tags", "tags"
   add_foreign_key "menus", "users"

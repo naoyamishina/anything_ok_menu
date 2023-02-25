@@ -72,6 +72,8 @@ module ApplicationHelper
       'text-danger'
     elsif object == "夕食"
       'text-primary'
+    elsif object == "間食"
+      'text-warning'
     end
   end
 

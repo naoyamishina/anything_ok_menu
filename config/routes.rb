@@ -11,16 +11,17 @@ Rails.application.routes.draw do
   get 'activities', to: 'eats#index'
 
   resources :users do
-    get :likes
+    get :bookmarks
     get :activities
   end
   resources :menus do
     resources :comments, only: %i[create destroy], shallow: true
     collection do
       get :search_tag
+      get :ranking
     end
   end
-  resources :likes, only: %i[create destroy]
+  resources :bookmarks, only: %i[create destroy]
   resources :eats, only: %i[create destroy]
   resource :profile, only: %i[edit update]
   resources :password_resets, only: %i[new create edit update]
