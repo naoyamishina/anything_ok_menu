@@ -254,6 +254,9 @@ GEM
     msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
+    net-ftp (0.2.0)
+      net-protocol
+      time
     net-imap (0.3.4)
       date
       net-protocol
@@ -376,6 +379,8 @@ GEM
       railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.0.11)
+    time (0.2.1)
+      date
     timeout (0.3.1)
     turbo-rails (1.3.2)
       actionpack (>= 6.0.0)
@@ -425,6 +430,10 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   meta-tags
+  net-ftp (~> 0.1)
+  net-imap (~> 0.2)
+  net-pop (~> 0.1)
+  net-smtp (~> 0.3)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
