@@ -47,7 +47,7 @@
               <li class="list-inline-item" style="float: right;">
                 <% if logged_in? %>
                   <%# Twitterシェア %>
-                  <%= link_to "Twitterシェア", "https://twitter.com/share?url=#{request.url}&text=「#{@menu.name}」をシェア!", class: "btn btn-primary btn-sm", title: 'Twitter', target: '_blank' %>
+                  <%= link_to "Twitterシェア", "https://twitter.com/share?url=#{request.url}&text=#{@menu.name}をシェア!/&hashtags=なんでもいい飯メニュー", class: "btn btn-primary btn-sm", title: 'Twitter', target: '_blank' %>
                   <%= link_to eats_path(menu_id: @menu.id), class:"mx-1 btn btn-success btn-sm", data: { turbo_method: :post, turbo_confirm: '食べる予定にしますか？' } do %>
                     食べる
                     <span class="badge bg-light text-dark"><%= "#{@menu.eats.size}" %></span>
