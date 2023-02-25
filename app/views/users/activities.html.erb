@@ -1,6 +1,9 @@
 <% assign_meta_tags title: (t '.title') %>
 <div class="container pt-3 mb-5">
   <%= render partial: 'content_top', locals: {user: @user}  %>  
-
-  <%= render partial: 'eats/eat', collection: @eat_menus %>
+  <% if @eat_menus.present? %>
+    <%= render partial: 'eats/eat', collection: @eat_menus %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
 </div>
