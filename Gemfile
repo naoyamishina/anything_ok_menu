@@ -105,5 +105,3 @@ end
 
 
 gem "hotwire-rails", "~> 0.1.3"
-
-gem "dockerfile-rails", ">= 1.2", :group => :development
