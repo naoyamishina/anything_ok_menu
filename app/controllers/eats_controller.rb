@@ -9,6 +9,7 @@ class EatsController < ApplicationController
     #対象メニュー特定し、eatsテーブルにユーザーid、メニューidをcreate
     @menu = Menu.find(params[:menu_id])
     current_user.eat(@menu)
+    @menu.create_notification_eat!(current_user)
     redirect_back_or_to(fallback_location: activities_path)
     flash['success'] = t('eats.create.success')
   end

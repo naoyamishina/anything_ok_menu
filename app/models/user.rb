@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :bookmark_menus, through: :bookmarks, source: :menu
   has_many :eats, dependent: :destroy
   has_many :eat_menus, through: :eats, source: :menu
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

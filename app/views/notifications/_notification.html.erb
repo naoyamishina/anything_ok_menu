@@ -1,0 +1,32 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-lg-6 offset-lg-3">
+  <div class="card m-2 bg-light">
+<div class="form-inline m-3">
+    <span>
+      <%= link_to user_path(visitor), class: "link-color-black"  do %>
+        <%= image_tag visitor.avatar_url, class: 'rounded-circle', size: '40x40' %>
+        <%= visitor.name %>さん
+      <% end %>が
+
+        <% case notification.action %>
+        <% when 'bookmark' then %>
+          あなたの
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          をブックマークしました
+        <% when 'eat' then %>
+          あなたの
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          に<b><font color="green">食べる</font></b>を押しました
+        <% when 'comment' then %>
+          あなたの
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          にコメントしました
+        <% end %>
+      </span>
+  <div class="small text-muted text-right mt-3">
+    <%= l notification.created_at, format: :long %>
+  </div> 
+</div> 
+  </div> 
+</div> 

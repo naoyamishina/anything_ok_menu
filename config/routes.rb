@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
   get 'activities', to: 'eats#index'
-
+  
   resources :users do
     get :bookmarks
     get :activities
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :eats, only: %i[create destroy]
   resource :profile, only: %i[edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :notifications, only: :index
 
   namespace :admin do
     root to: 'dashboards#index'

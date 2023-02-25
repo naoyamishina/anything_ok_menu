@@ -3,6 +3,7 @@ class BookmarksController < ApplicationController
     #対象メニュー特定し、bookmarksテーブルにユーザーid、メニューidをcreate
     @menu = Menu.find(params[:menu_id])
     current_user.bookmark(@menu)
+    @menu.create_notification_bookmark!(current_user)
   end
 
   def destroy
