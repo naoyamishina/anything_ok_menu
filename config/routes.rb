@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get :likes
       get :mymenus
+      get :search_tag
     end
   end
   resources :likes, only: %i[create destroy]

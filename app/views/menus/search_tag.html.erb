@@ -3,21 +3,24 @@
   <%= render 'content_top' %>
 
   <div class="row">
-      <!-- 検索フォーム -->
-      <%= render 'search_form', url: mymenus_menus_path %>
+    <!-- 検索フォーム -->
+    <%= render 'search_form', url: search_tag_menus_path %>
   </div>
-  <!-- メニュー一覧 -->
+  <h4 class="text-center p-1 mb-3 border-bottom">
+    <%= "タグ：#{@tag.name}" %>
+  </h4>
+  <!-- 掲示板一覧 -->
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @my_menus.present? %>
-          <%= render @my_menus %>
+        <% if @menus.present? %>
+          <%= render @menus %>
         <% else %>
           <p><%= t('.no_result') %></p>
         <% end %>
       </div>
       <!-- ページネーション -->
-      <%= paginate @my_menus %>
+      <%= paginate @menus %>
     </div>
   </div>
 </div>

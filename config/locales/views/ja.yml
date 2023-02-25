@@ -64,6 +64,8 @@ ja:
     mymenus:
       title: '自分のメニュー一覧'
       no_result: 'メニューがありません。'
+    search_tag:
+      title: 'メニュー一覧'
   likes:
     create:
       success: 'お気に入りしました'
@@ -93,7 +95,7 @@ ja:
         fail: 'ログインに失敗しました'
       destroy:
         success: 'ログアウトしました'
-    dashmenus:
+    dashboards:
       index:
         title: 'ダッシュボード'
     users:

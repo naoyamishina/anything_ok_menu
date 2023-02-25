@@ -19,6 +19,7 @@ ja:
         menu_image: 'イメージ写真'
         eat_at: '食事のタイミング'
         user: '作成者'
+        tag_name: タグ
       comment:
         body: 'コメント'
   attributes:
