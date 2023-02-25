@@ -14,7 +14,7 @@ class MenusController < ApplicationController
   def create
     @menu = current_user.menus.build(menu_params)
     @tag_list = params[:menu][:tag_name]
-    @tag = @tag_list.gsub(" ", "").split(',').uniq
+    @tag = @tag_list.gsub(" ", "").gsub("、", ",").split(',').uniq
     if @menu.save
       @menu.save_tag(@tag)
       redirect_to menus_path, success: t('defaults.message.created', item: Menu.model_name.human)
@@ -36,7 +36,7 @@ class MenusController < ApplicationController
   end
 
   def update
-    tag_list = params[:menu][:tag_name].gsub(" ", "").split(',').uniq
+    tag_list = params[:menu][:tag_name].gsub(" ", "").gsub("、", ",").split(',').uniq
     if @menu.update(menu_params)
       @old_relations = MenuTag.where(menu_id: @menu.id)
       @old_relations.each do |relation|
