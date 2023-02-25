@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="robots" content="noindex, nofollow">
-  <title><%= page_title(yield(:title), admin: true) %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'admin', media: 'all' %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= show_meta_tags %>
 </head>
 <body class="hold-transition login-page">
   <div>

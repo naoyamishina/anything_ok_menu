@@ -1,10 +1,13 @@
 <div class="row">
-    <div class="col-lg-3 offset-lg-3 p-2">
+    <div class="col-lg-4 offset-lg-3 p-2">
       <div class="card-body">
-        <ul class="nav nav-lb-tab mb-6 justify-content-center" id="#" role="tablist">
+        <ul class="nav nav-lb-tab mb-6" id="#" role="tablist">
           <li class="nav-item m-1 mx-4" role="presentation" style="font-size:24px">
             <%= image_tag user.avatar_url, size: '80x80', class: 'rounded-circle mr15 mx-3'%>
             <%= user.name %>
+            <% if current_user.id == user.id %>
+              <%= link_to t('profiles.edit.title'), edit_profile_path, class: 'btn btn-outline-success mx-4' %>
+            <% end %>
           </li>
         </ul>
       </div>
