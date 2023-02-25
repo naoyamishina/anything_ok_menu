@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
-  create_table "bookmarks", charset: "utf8mb4", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "menu_id", null: false
     t.datetime "created_at", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "comments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "user_id", null: false
     t.bigint "menu_id", null: false
@@ -31,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "eats", charset: "utf8mb4", force: :cascade do |t|
+  create_table "eats", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "menu_id", null: false
     t.datetime "created_at", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["user_id"], name: "index_eats_on_user_id"
   end
 
-  create_table "menu_tags", charset: "utf8mb4", force: :cascade do |t|
+  create_table "menu_tags", force: :cascade do |t|
     t.bigint "menu_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
@@ -50,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["tag_id"], name: "index_menu_tags_on_tag_id"
   end
 
-  create_table "menus", charset: "utf8mb4", force: :cascade do |t|
+  create_table "menus", force: :cascade do |t|
     t.string "name", null: false
     t.text "memo"
     t.bigint "user_id"
@@ -61,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
-  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "menu_id"
@@ -76,13 +79,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_230030) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
-  create_table "tags", charset: "utf8mb4", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "crypted_password"

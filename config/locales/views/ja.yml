@@ -48,9 +48,9 @@ ja:
     show:
       title: 'ユーザー'
       no_result: 'メニューがありません。'
-    likes:
+    bookmarks:
       title: 'お気に入り一覧'
-      no_result: 'お気に入りのメニューがありません。'
+      no_result: 'ブックマークしたメニューがありません。'
     activities:
       title: 'ユーザーアクティビティ'
       no_result: '記録がありません。'
@@ -79,11 +79,11 @@ ja:
       no_result: 'メニューがありません。'
     search_tag:
       title: 'メニュー一覧'
-  likes:
+  bookmarks:
     create:
-      success: 'お気に入りしました'
+      success: 'ブックマーク登録しました'
     destroy:
-      success: 'お気に入りを外しました'
+      success: 'ブックマークを外しました'
   profiles:
     edit:
       title: 'プロフィール編集'
@@ -95,6 +95,9 @@ ja:
       success: 'アクティビティに登録しました'
     destroy:
       success: 'アクティビティから外しました'
+  notifications:
+    index:
+      title: '通知一覧'
   password_resets:
     new:
       title: 'パスワードリセット申請'
