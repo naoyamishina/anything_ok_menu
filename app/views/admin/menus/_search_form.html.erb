@@ -1,0 +1,17 @@
+<%= search_form_for @q, url: admin_menus_path do |f| %>
+  <div class="row">
+    <div class="form-inline align-items-center mx-auto">
+      <div class="col-auto">
+        <%= f.search_field :name_or_memo_cont, class: 'form-control', placeholder: t('defaults.search_word') %>
+      </div>
+      <div class="col-auto">
+        <%= f.date_field :created_at_gteq, class: 'form-control' %>
+        <span>〜</span>
+        <%= f.date_field :created_at_lteq_end_of_day, class: 'form-control' %>
+      </div>
+      <div class="col-auto">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
