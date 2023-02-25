@@ -1,4 +1,5 @@
 class EatsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
 
   def index
     @eats = Eat.all.includes([:user, :menu]).order(created_at: :desc)

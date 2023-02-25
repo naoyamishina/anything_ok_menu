@@ -16,3 +16,54 @@
     </div>
   </div>
 </div>
+<div class="top-about center-block bg-light py-5">
+  <div class="col-lg-6 offset-lg-3 mt-2">
+    <h3 class="text-center mb-4 border-bottom pb-3">「なんでもいい飯メニュー」とは</h3>
+    <h4 class="text-center">「何か食べたいのある？」</h4>
+    <p class="px-5">この質問に悩んだ経験ありませんか？<br>
+    特別食べたいものはないし、レシピアプリ見ても食欲が湧かない...</p>
+    <p class="px-5">こんな時の鉄板メニューこそ「なんでもいい飯メニュー」です！<br>
+    メニューの記録・共有から鉄板メニューを増やし、悩みの種からも解放されよう！
+    </p>
+  </div>
+</div>
+<div class="top-content center-block pt-5 pb-3">
+  <div class="col-lg-6 offset-lg-3 mt-2">
+    <h3 class="text-center mb-4 border-bottom pb-3">メニューの決め方</h3>
+    <div class="card mb-5 p-5">
+    <h4 class="text-center card-title mb-3 border-bottom pb-3">「なんでもいい飯メニュー」を記録して思い出す</h4>
+    <p> <font color="#ff0000">「新メニュー作成」</font> からメニューを投稿しよう！<br>
+    食べたいタイミングやこだわりなどを記録しておくとメニュー決めに役立つかも！</p>
+    </div>
+    <div class="card mb-5 p-5">
+    <h4 class="text-center card-title mb-3 border-bottom pb-3"><font color="#ff0000">「みんなのメニュー」</font>を見て決める</h4>
+    <p>色んなメニューを見て、食べたいメニューが閃くきっかけにしよう！<br>
+    食べたいメニューを見つけたら<b><font color="green">「食べる」</font></b>ボタンを押して記録を作ろう！<br>
+    よく食べられてる人気メニューも見ることができます！</p>
+    </div>
+    <div class="card mb-2 p-5">
+    <h4 class="text-center card-title mb-3 border-bottom pb-3">これまで食べたメニューを振り返る</h4>
+    <p><font color="#ff0000">マイページ</font>で自分の投稿メニューや<b><font color="green">「食べる」</font></b>を押した履歴をチェック！<br>
+    過去の自分の食事傾向から何でもいい飯メニューを見つけよう</p>
+    </div>
+  </div>
+</div>
+<div class="top-bootom center-block bg-light">
+  <div class="mt-3 py-5">
+    <div class="col-lg-6 offset-lg-3">
+      <h3 class="text-center mb-4 border-bottom pb-3">早速使ってみる</h3>
+      <div class="text-center mb-3">
+        <div>
+          <span class="px-2">
+            <%= link_to "ログイン", login_path, class: 'btn btn-danger' %>
+          </span>
+          <span>
+            <%= link_to "新規ユーザー登録", new_user_path, class: 'btn btn-success' %>
+          </span>
+        </div>
+        <div>
+          <%= link_to "ユーザー登録なしで閲覧", menus_path, class: 'btn btn-secondary mt-4' %>
+        </div>
+    </div>
+  </div>
+</div>
