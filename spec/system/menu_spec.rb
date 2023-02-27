@@ -42,7 +42,7 @@ RSpec.describe 'Menus', type: :system do
 
           it '自分のメニュー一覧が表示されること' do
             menu
-            visit mymenus_menus_path
+            visit user_path(user)
             expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
             expect(page).to have_content(menu.user.name), '自分のメニュー一覧画面に投稿者の名前が表示されていません'
           end
