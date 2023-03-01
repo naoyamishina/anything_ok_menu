@@ -94,9 +94,9 @@ RSpec.describe 'Menus', type: :system do
     end
 
     describe 'メニューの編集' do
+      before {login_as(user)}
       context '他人のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do
-          login_as(user)
           sleep 0.5
           visit menu_path menu_by_others
           expect(page).not_to have_selector("#button-edit-#{menu_by_others.id}")
@@ -104,7 +104,6 @@ RSpec.describe 'Menus', type: :system do
         end
       end
       context '自分のメニューの場合' do
-        before {login_as(user)}
         it '編集ボタン・削除ボタンが表示されること' do
           sleep 0.5
           visit menu_path menu
