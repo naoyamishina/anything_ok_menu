@@ -104,12 +104,33 @@ RSpec.describe 'Menus', type: :system do
         end
       end
       context '自分のメニューの場合' do
+        before {login_as(user)}
         it '編集ボタン・削除ボタンが表示されること' do
-          login_as(user)
           sleep 0.5
           visit menu_path menu
           expect(page).to have_selector("#button-edit-#{menu.id}")
           expect(page).to have_selector("#button-delete-#{menu.id}")
+        end
+
+        it '自分のメニューを編集' do
+          sleep 0.5
+          visit menu_path menu
+          click_link("button-edit-#{menu.id}")
+          fill_in 'メニュー名', with: 'edit_title'
+          fill_in 'メモ', with: 'edit_content'
+          click_button '更新する'
+          expect(page).to have_content 'edit_title'
+          expect(page).to have_content 'edit_content'
+          expect(page).to have_current_path menu_path menu
+        end
+
+        it '自分のメニューを削除' do
+          sleep 0.5
+          visit menu_path menu
+          click_link("button-delete-#{menu.id}")
+          expect(page.accept_confirm).to eq "削除しますか？"
+          expect(page).not_to have_content(menu.name)
+          expect(page).to have_current_path menus_path
         end
       end
     end
