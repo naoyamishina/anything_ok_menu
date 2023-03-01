@@ -21,7 +21,7 @@
       <%= link_to t('投稿メニュー一覧'), user_path(user), class: "btn btn-outline-danger mx-1 #{active_if('users#show')}" %>
       </li>
       <li class="nav-item m-2" role="presentation">
-        <%= link_to t('アクティビティ'), user_activities_path(user), class: "btn btn-outline-danger mx-3 #{active_if('users#activities')}" %>
+        <%= link_to t('アクティビティ'), user_eats_path(user), class: "btn btn-outline-danger mx-3 #{active_if('users#eats')}" %>
       </li>
       <li class="nav-item m-2 mb-1" role="presentation">
         <%= link_to t('ブックマーク一覧'), user_bookmarks_path(user), class: "btn btn-outline-danger mx-1 #{active_if('users#bookmarks')}" %>

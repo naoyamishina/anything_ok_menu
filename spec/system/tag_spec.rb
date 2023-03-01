@@ -52,7 +52,6 @@ RSpec.describe 'タグ', type: :system do
 
     it 'タグの編集ができること' do
       sleep 0.5
-      menu
       visit edit_menu_path(menu)
       fill_in 'メニュー名', with: 'test_title'
       fill_in 'メモ', with: 'test_content'

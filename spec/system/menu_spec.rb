@@ -40,11 +40,25 @@ RSpec.describe 'Menus', type: :system do
             expect(page).to have_content(menu.user.name), 'メニュー一覧画面に投稿者のフルネームが表示されていません'
           end
 
-          it '自分のメニュー一覧が表示されること' do
+          it 'ユーザー詳細画面で自分のメニュー一覧が表示されること' do
             menu
+            menu_by_others
             visit user_path(user)
             expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
             expect(page).to have_content(menu.user.name), '自分のメニュー一覧画面に投稿者の名前が表示されていません'
+            expect(page).not_to have_content(menu_by_others.name), '他人のメニューの投稿者名が表示されています'
+          end
+
+          it '食べる上位メニューが表示される', js: true do
+            sleep 0.5
+            menu
+            visit menus_path
+            click_link("eat_botton")
+            expect(page.accept_confirm).to eq "食べる予定にしますか？"
+            menu_by_others
+            visit ranking_menus_path
+            expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
+            expect(page).not_to have_content(menu_by_others.name), '他人のメニューの投稿者名が表示されています'
           end
         end
       end
@@ -79,8 +93,8 @@ RSpec.describe 'Menus', type: :system do
       end
     end
 
-    describe '掲示板の編集' do
-      context '他人の掲示板の場合' do
+    describe 'メニューの編集' do
+      context '他人のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do
           login_as(user)
           sleep 0.5
@@ -89,7 +103,7 @@ RSpec.describe 'Menus', type: :system do
           expect(page).not_to have_selector("#button-delete-#{menu_by_others.id}")
         end
       end
-      context '自分の掲示板の場合' do
+      context '自分のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されること' do
           login_as(user)
           sleep 0.5

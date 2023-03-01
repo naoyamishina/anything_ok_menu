@@ -10,7 +10,7 @@ class EatsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     current_user.eat(@menu)
     @menu.create_notification_eat!(current_user)
-    redirect_back_or_to(fallback_location: activities_path)
+    redirect_to eats_path
     flash['success'] = t('eats.create.success')
   end
 

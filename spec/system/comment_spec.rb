@@ -48,7 +48,7 @@ RSpec.describe 'コメント', type: :system do
       end
     end
 
-    describe 'コメントの編集' do
+    describe 'コメントの削除' do
       context '他人のコメントの場合' do
         before {login_as(me)}
         it '削除ボタンが表示されないこと' do
