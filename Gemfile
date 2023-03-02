@@ -3,18 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-gem 'net-ftp', '~> 0.1'
-gem 'net-imap', '~> 0.2'
-gem 'net-pop', '~> 0.1'
-gem 'net-smtp', '~> 0.3'
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use mysql as the database for Active Record
+# Use postgres as the database for Active Record
 gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -53,6 +48,8 @@ gem 'rails-i18n'
 
 gem "jsbundling-rails"
 gem "cssbundling-rails"
+
+gem "hotwire-rails", "~> 0.1.3"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -103,5 +100,3 @@ group :development do
   # gem "spring"
 end
 
-
-gem "hotwire-rails", "~> 0.1.3"
