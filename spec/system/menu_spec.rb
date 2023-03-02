@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Menus', type: :system do
+RSpec.describe 'メニュー', type: :system do
   let!(:user) { create(:user) }
   let(:menu) { create(:menu, user: user) }
   let(:menu_by_others) { create(:menu) }
@@ -93,7 +93,7 @@ RSpec.describe 'Menus', type: :system do
       end
     end
 
-    describe 'メニューの編集' do
+    describe 'メニューの編集、削除' do
       before {login_as(user)}
       context '他人のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do

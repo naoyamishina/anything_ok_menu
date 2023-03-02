@@ -25,19 +25,17 @@ RSpec.describe 'コメント', type: :system do
 
     describe 'コメントの作成' do
       before {login_as(me)}
-      it 'コメントを作成できること', js: true do
+      it 'コメントを作成できること' do
         sleep 0.5
         visit menu_path menu
         fill_in 'js-new-comment-body', with: '新規コメント'
         click_on 'js-comment-create-btn'
-        wait_for_ajax do
-          comment = Comment.last
-          within("#comment-#{comment.id}") do
-            expect(page).to have_content(me.name)
-            expect(page).to have_content '新規コメント'
-          end
+        sleep 0.1
+        comment = Comment.last
+        within("#comment-#{comment.id}") do
+          expect(page).to have_content(me.name)
+          expect(page).to have_content '新規コメント'
         end
-        
       end
 
       it 'コメントの作成に失敗すること', js: true do

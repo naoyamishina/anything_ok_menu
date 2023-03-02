@@ -10,7 +10,7 @@
           <%= link_to t('マイページ'), user_path(current_user.id), class: 'btn btn-danger btn-sm mx-1' %>
         </li>
         <li class="px-3">
-          <%= link_to notifications_path, class: "link-color-black" do %>
+          <%= link_to notifications_path, class: "link-color-black", id: "notification-botton" do %>
             <% if unchecked_notifications.any? %>
               <span class="text-dark">
               <svg class="text-warning" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">

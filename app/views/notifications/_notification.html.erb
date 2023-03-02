@@ -12,15 +12,15 @@
         <% case notification.action %>
         <% when 'bookmark' then %>
           あなたの
-          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black", id: "bookmark_notification" %>
           をブックマークしました
         <% when 'eat' then %>
           あなたの
-          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black", id: "eat_notification" %>
           に<b><font color="green">食べる</font></b>を押しました
         <% when 'comment' then %>
           あなたの
-          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black" %>
+          <%= link_to "「#{notification.menu.name}」", notification.menu, style: "font-weight: bold;", class: "link-color-black", id: "comment_notification" %>
           にコメントしました
         <% end %>
       </span>
