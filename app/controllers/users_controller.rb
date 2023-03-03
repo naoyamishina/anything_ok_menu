@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @bookmark_menus = @user.bookmark_menus.includes([:user, :bookmarks, :tags, :eats, :comments]).order(created_at: :desc).page(params[:page])
   end
 
-  def activities
+  def eats
     @user = User.find(params[:user_id])
     @eat_menus = @user.eats.includes([:user, :menu]).order(created_at: :desc).page(params[:page])
   end

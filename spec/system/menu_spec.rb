@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Menus', type: :system do
+RSpec.describe 'メニュー', type: :system do
   let!(:user) { create(:user) }
   let(:menu) { create(:menu, user: user) }
   let(:menu_by_others) { create(:menu) }
@@ -40,11 +40,25 @@ RSpec.describe 'Menus', type: :system do
             expect(page).to have_content(menu.user.name), 'メニュー一覧画面に投稿者のフルネームが表示されていません'
           end
 
-          it '自分のメニュー一覧が表示されること' do
+          it 'ユーザー詳細画面で自分のメニュー一覧が表示されること' do
             menu
-            visit mymenus_menus_path
+            menu_by_others
+            visit user_path(user)
             expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
             expect(page).to have_content(menu.user.name), '自分のメニュー一覧画面に投稿者の名前が表示されていません'
+            expect(page).not_to have_content(menu_by_others.name), '他人のメニューの投稿者名が表示されています'
+          end
+
+          it '食べる上位メニューが表示される', js: true do
+            sleep 0.5
+            menu
+            visit menus_path
+            click_link("eat_botton")
+            expect(page.accept_confirm).to eq "食べる予定にしますか？"
+            menu_by_others
+            visit ranking_menus_path
+            expect(page).to have_content(menu.name), '自分メニュー一覧画面にメニューのタイトルが表示されていません'
+            expect(page).not_to have_content(menu_by_others.name), '他人のメニューの投稿者名が表示されています'
           end
         end
       end
@@ -79,23 +93,43 @@ RSpec.describe 'Menus', type: :system do
       end
     end
 
-    describe '掲示板の編集' do
-      context '他人の掲示板の場合' do
+    describe 'メニューの編集、削除' do
+      before {login_as(user)}
+      context '他人のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されないこと' do
-          login_as(user)
           sleep 0.5
           visit menu_path menu_by_others
           expect(page).not_to have_selector("#button-edit-#{menu_by_others.id}")
           expect(page).not_to have_selector("#button-delete-#{menu_by_others.id}")
         end
       end
-      context '自分の掲示板の場合' do
+      context '自分のメニューの場合' do
         it '編集ボタン・削除ボタンが表示されること' do
-          login_as(user)
           sleep 0.5
           visit menu_path menu
           expect(page).to have_selector("#button-edit-#{menu.id}")
           expect(page).to have_selector("#button-delete-#{menu.id}")
+        end
+
+        it '自分のメニューを編集' do
+          sleep 0.5
+          visit menu_path menu
+          click_link("button-edit-#{menu.id}")
+          fill_in 'メニュー名', with: 'edit_title'
+          fill_in 'メモ', with: 'edit_content'
+          click_button '更新する'
+          expect(page).to have_content 'edit_title'
+          expect(page).to have_content 'edit_content'
+          expect(page).to have_current_path menu_path menu
+        end
+
+        it '自分のメニューを削除' do
+          sleep 0.5
+          visit menu_path menu
+          click_link("button-delete-#{menu.id}")
+          expect(page.accept_confirm).to eq "削除しますか？"
+          expect(page).not_to have_content(menu.name)
+          expect(page).to have_current_path menus_path
         end
       end
     end

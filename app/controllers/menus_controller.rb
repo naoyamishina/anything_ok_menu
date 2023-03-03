@@ -52,7 +52,7 @@ class MenusController < ApplicationController
 
   def destroy
     @menu.destroy!
-    redirect_back_or_to(fallback_location: menus_path, status: :see_other)
+    redirect_to menus_path, status: :see_other
     flash['success'] = t('defaults.message.deleted', item: Menu.model_name.human)
   end
 

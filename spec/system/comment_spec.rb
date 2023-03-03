@@ -25,19 +25,17 @@ RSpec.describe 'コメント', type: :system do
 
     describe 'コメントの作成' do
       before {login_as(me)}
-      it 'コメントを作成できること', js: true do
+      it 'コメントを作成できること' do
         sleep 0.5
         visit menu_path menu
         fill_in 'js-new-comment-body', with: '新規コメント'
         click_on 'js-comment-create-btn'
-        wait_for_ajax do
-          comment = Comment.last
-          within("#comment-#{comment.id}") do
-            expect(page).to have_content(me.name)
-            expect(page).to have_content '新規コメント'
-          end
+        sleep 0.1
+        comment = Comment.last
+        within("#comment-#{comment.id}") do
+          expect(page).to have_content(me.name)
+          expect(page).to have_content '新規コメント'
         end
-        
       end
 
       it 'コメントの作成に失敗すること', js: true do
@@ -48,14 +46,33 @@ RSpec.describe 'コメント', type: :system do
       end
     end
 
-    describe 'コメントの編集' do
+    describe 'コメントの削除' do
+      before {login_as(me)}
       context '他人のコメントの場合' do
-        before {login_as(me)}
         it '削除ボタンが表示されないこと' do
           sleep 0.5
           visit menu_path menu
           within("#comment-#{comment_by_others.id}") do
-            expect(page).not_to have_selector('.js-delete-comment-button')
+            expect(page).not_to have_selector('#js-delete-comment-button')
+          end
+        end
+      end
+      context '自分のコメントの場合' do
+        it '削除ボタンが表示されること' do
+          sleep 0.5
+          visit menu_path menu
+          within("#comment-#{comment_by_me.id}") do
+            expect(page).to have_selector('#js-delete-comment-button')
+          end
+        end
+
+        it 'コメントを削除できる' do
+          sleep 0.5
+          visit menu_path menu
+          click_link('js-delete-comment-button')
+          expect(page.accept_confirm).to eq "削除しますか？"
+          within('#comment_index') do
+            expect(page).not_to have_content(comment_by_me.body)
           end
         end
       end

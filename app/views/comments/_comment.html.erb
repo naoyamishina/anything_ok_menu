@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(comment) do %>
 <div class="col-lg-6 offset-lg-3">
   <div class="card mb-1">
-    <div class="card-body">
+    <div class="card-body" id="comment-<%= comment.id %>">
       <div class="pb-1">
         <%= link_to user_path(comment.user), class: "link-color-black text-dark" do %>
           <%= image_tag comment.user.avatar_url, class: 'rounded-circle', size: '45x45' %>
@@ -19,7 +19,8 @@
         <% if logged_in? && current_user.own?(comment) %>
           <li class="list-inline-item" style="float: right;">
             <%= link_to comment_path(comment),
-                        class: 'js-delete-comment-button link-color-black',
+                        class: 'link-color-black',
+                        id:'js-delete-comment-button',
                         data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm') } do %>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>

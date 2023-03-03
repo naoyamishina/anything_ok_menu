@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :system do
+RSpec.describe 'ユーザー', type: :system do
   let(:user) { create(:user) }
 
   describe 'ログイン前' do
@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'パスワード確認', with: 'password'
           click_button '登録'
           expect(page).to have_content 'ユーザー登録が完了しました'
-          expect(page).to have_current_path login_path
+          expect(page).to have_current_path menus_path
         end
       end
 
