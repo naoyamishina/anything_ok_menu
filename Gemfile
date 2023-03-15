@@ -55,6 +55,7 @@ gem "hotwire-rails", "~> 0.1.3"
 # gem "image_processing", "~> 1.2"
 
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'kaminari'
 
