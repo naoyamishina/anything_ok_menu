@@ -51,7 +51,7 @@ ja:
     bookmarks:
       title: 'お気に入り一覧'
       no_result: 'ブックマークしたメニューがありません。'
-    activities:
+    eats:
       title: 'ユーザーアクティビティ'
       no_result: '記録がありません。'
   user_sessions:
