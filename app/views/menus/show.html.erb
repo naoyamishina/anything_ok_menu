@@ -1,4 +1,4 @@
-<% assign_meta_tags title: (t '.title') %>
+<% assign_meta_tags title: (t '.title'), image: @menu.menu_image.url %>
 <div class="container pt-3 mb-5 mt-3">
   <div class="row">
     <div class="col-lg-6 offset-lg-3 mb-3 border p-4 bg-light">
@@ -47,7 +47,7 @@
               <li class="list-inline-item" style="float: right;">
                 <% if logged_in? %>
                   <%# Twitterシェア %>
-                  <%= link_to "Twitterシェア", "https://twitter.com/share?url=#{request.url}&text=#{@menu.name}をシェア!&hashtags=なんでもいい飯メニュー", class: "btn btn-primary btn-sm", title: 'Twitter', target: '_blank' %>
+                  <%= link_to "Twitterシェア", "https://twitter.com/intent/tweet?url=#{request.url}&text=【#{@menu.name}】をシェア!%0a%20%23なんでもいい飯メニュー", class: "btn btn-primary btn-sm", title: 'Twitter', target: '_blank' %>
                   <%= link_to eats_path(menu_id: @menu.id), class:"mx-1 btn btn-success btn-sm", data: { turbo_method: :post, turbo_confirm: '食べる予定にしますか？' } do %>
                     食べる
                     <span class="badge bg-light text-dark"><%= "#{@menu.eats.size}" %></span>
