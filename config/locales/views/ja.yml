@@ -11,7 +11,8 @@ ja:
     delete: '削除'
     unspecified: '指定なし'
     edit: '編集'
-    search_menu: 'フリーワード'
+    search_menu: 'フリー (1語)'
+    search_tag: 'タグ (1語)'
     detail: "詳細"
     password_reset: 'パスワードリセット'
     message:
