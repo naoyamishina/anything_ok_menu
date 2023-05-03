@@ -1,3 +1,5 @@
-<div class="row" id="comment_index">
+<%= turbo_frame_tag "comments" do %>
+  <div class="row" id="comment_index">
     <%= render comments %>
-</div>
+  </div>
+<% end %>
