@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    @menu = Menu.find(params[:menu_id])
     @comment = current_user.comments.build(comment_params)
     if @comment.save
     else

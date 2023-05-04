@@ -63,7 +63,9 @@
 
   <!-- コメントフォーム -->
   <% if logged_in? %>
-    <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+    <%= turbo_frame_tag "comment_form" do %>
+      <%= render 'comments/form', { menu: @menu, comment: @comment } %>
+    <% end %>
   <% end %>
 
   <!-- コメントエリア -->
