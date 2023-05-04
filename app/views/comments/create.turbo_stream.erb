@@ -2,4 +2,6 @@
   <%= render @comment %>
 <% end %>
 
-<%= turbo_stream.update "comment_form" %>
+<%= turbo_stream.update "comment_form" do %>
+  <%= render 'comments/form', { menu: @menu, comment: Comment.new } %>
+<% end %>
